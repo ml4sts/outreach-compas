@@ -197,11 +197,6 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#there-are-however-risks-to-drawing-conclusions-from-this-dataset">
-   There are, however, risks to drawing conclusions from this dataset.
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-analysis-python">
    Data Analysis, Python,
   </a>
@@ -222,12 +217,12 @@
 <div class="section" id="compas-debate">
 <h2>COMPAS Debate<a class="headerlink" href="#compas-debate" title="Permalink to this headline">¶</a></h2>
 <p>This activity replicates the findings of the piece <a class="reference external" href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">Machine Bias</a> by Julia Angwin et al at Propublica.
-They also published a more detailed <span class="xref myst">technical description</span> and their <a class="reference external" href="https://github.com/propublica/compas-analysis">data and code</a>.</p>
-<p>Northpointe, the people who developed the tool wrote <span class="xref myst">a response to Propublica</span> and Propublica wrote [a response to Northpointe].</p>
+They also published a more detailed <a class="reference external" href="https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm">technical description</a> and their <a class="reference external" href="https://github.com/propublica/compas-analysis">data and code</a>.</p>
+<p>Northpointe, the people who developed the tool wrote <a class="reference external" href="https://www.equivant.com/response-to-propublica-demonstrating-accuracy-equity-and-predictive-parity/">a response to ProPublica</a> and ProPublica wrote <a class="reference external" href="https://www.propublica.org/article/technical-response-to-northpointe">a response to Northpointe</a>.</p>
 <p>Researchers then used this dataset to do a lot of different studies a few highlights include:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.propublica.org/article/bias-in-criminal-risk-scores-is-mathematically-inevitable-researchers-say">Fairness definitions are incompatible</a> more on this in the <a class="reference external" href="https://fairmlbook.org/classification.html">Fair Machine Learning Textbook Classification Chapter</a></p></li>
-<li><p><a class="reference external" href="https://advances.sciencemag.org/content/4/1/eaao5580">COMPAS is only as accurate and fair as untrained people</a> <a class="reference external" href="https://advances-sciencemag-org.uri.idm.oclc.org/content/4/1/eaao5580">URI library access</a></p></li>
+<li><p><a class="reference external" href="https://advances.sciencemag.org/content/4/1/eaao5580">COMPAS is only as accurate and fair as untrained people</a> <a class="reference external" href="https://advances-sciencemag-org.uri.idm.oclc.org/content/4/1/eaao5580">same paper via URI library access</a></p></li>
 <li><p><a class="reference external" href="https://corels.eecs.harvard.edu/index.html">CORELS</a> is a system that produces a list of rules to predict an outcome, when applied to this data it learns a similarly accurate model with only 3 rules (label=1 is predict recidivism)</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">({</span><span class="n">Prior</span><span class="o">-</span><span class="n">Crimes</span><span class="o">&gt;</span><span class="mi">3</span><span class="p">})</span> <span class="n">then</span> <span class="p">({</span><span class="n">label</span><span class="o">=</span><span class="mi">1</span><span class="p">})</span>
@@ -235,9 +230,10 @@ They also published a more detailed <span class="xref myst">technical descriptio
 <span class="k">else</span> <span class="p">({</span><span class="n">label</span><span class="o">=</span><span class="mi">0</span><span class="p">})</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="there-are-however-risks-to-drawing-conclusions-from-this-dataset">
-<h2>There are, however, risks to drawing conclusions from this dataset.<a class="headerlink" href="#there-are-however-risks-to-drawing-conclusions-from-this-dataset" title="Permalink to this headline">¶</a></h2>
+<p>There are, however, risks to drawing conclusions from this dataset.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/2106.05498">it’s COMPASlicated</a></p></li>
+</ul>
 </div>
 <div class="section" id="data-analysis-python">
 <h2>Data Analysis, Python,<a class="headerlink" href="#data-analysis-python" title="Permalink to this headline">¶</a></h2>
