@@ -27,7 +27,7 @@ class Tutorial:
         self.current += 1
 
     def show(self,n):
-        cell = lab.cells[n]
+        cell = self.tutorial.cells[n]
         if cell.cell_type == 'markdown':
             display(Markdown(cell.source))
         if cell.cell_type =='code':
