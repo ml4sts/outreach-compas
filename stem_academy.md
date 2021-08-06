@@ -1,5 +1,6 @@
 ---
 jupytext:
+  formats: md:myst,ipynb
   text_representation:
     extension: .md
     format_name: myst
@@ -38,8 +39,6 @@ import warnings
 warnings.filterwarnings('ignore')
 ```
 
-+++
-
 # %load code/data.md
 ## Propublica COMPAS Data
 
@@ -57,6 +56,10 @@ df = pd.read_csv("https://github.com/propublica/compas-analysis/raw/master/compa
 
 print(list(df))
 print(df.head())
+```
+
+```{code-cell} ipython3
+df.to_csv('data/compas.csv')
 ```
 
 # %load code/clean.md
@@ -84,6 +87,10 @@ df = df[features_to_keep]
 df = clean_compas(df)
 df.head()
 print("\ndataset shape (rows, columns)", df.shape)
+```
+
+```{code-cell} ipython3
+df.to_csv('data/compas_c.csv')
 ```
 
 # %load code/explore.md
@@ -122,7 +129,6 @@ df['race'].value_counts()
 # %load code/filter
 df = df.loc[df['race'].isin(['African-American','Caucasian'])]
 ```
-
 
 ### COMPAS score distribution
 
@@ -240,6 +246,10 @@ dfQ['priors_count'] = dfQ['priors_count'].apply(quantizePrior)
 dfQ['length_of_stay'] = dfQ['length_of_stay'].apply(quantizeLOS)
 dfQ['score_text'] = dfQ['score_text'].apply(quantizeScore)
 dfQ['age_cat'] = dfQ['age_cat'].apply(adjustAge)
+```
+
+```{code-cell} ipython3
+dfQ.to_csv('data/compas_cq.csv')
 ```
 
 ```{code-cell} ipython3
