@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Additional Reading &#8212; My sample book</title>
+    <title>Tutorial Logistics &#8212; My sample book</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Tutorial Logistics" href="tutorial.html" />
-    <link rel="prev" title="Cheatsheet" href="cheatsheet.html" />
+    <link rel="prev" title="Additional Reading" href="resources.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -94,7 +93,7 @@
   Activity
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="activity.html">
    Replicating Propublica’s COMPAS Audit
@@ -105,8 +104,8 @@
    Cheatsheet
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="resources.html">
    Additional Reading
   </a>
  </li>
@@ -116,9 +115,9 @@
   About
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="tutorial.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Tutorial Logistics
   </a>
  </li>
@@ -163,7 +162,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/resources.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/tutorial.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -183,7 +182,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fresources.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftutorial.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -210,13 +209,13 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#compas-debate">
-   COMPAS Debate
+  <a class="reference internal nav-link" href="#usage">
+   Usage
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-analysis-python">
-   Data Analysis, Python,
+  <a class="reference internal nav-link" href="#adding-a-new-tutorial">
+   Adding a new tutorial
   </a>
  </li>
 </ul>
@@ -230,33 +229,26 @@
         
               <div>
                 
-  <div class="section" id="additional-reading">
-<h1>Additional Reading<a class="headerlink" href="#additional-reading" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="compas-debate">
-<h2>COMPAS Debate<a class="headerlink" href="#compas-debate" title="Permalink to this headline">¶</a></h2>
-<p>This activity replicates the findings of the piece <a class="reference external" href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">Machine Bias</a> by Julia Angwin et al at Propublica.
-They also published a more detailed <a class="reference external" href="https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm">technical description</a> and their <a class="reference external" href="https://github.com/propublica/compas-analysis">data and code</a>.</p>
-<p>Northpointe, the people who developed the tool wrote <a class="reference external" href="https://www.equivant.com/response-to-propublica-demonstrating-accuracy-equity-and-predictive-parity/">a response to ProPublica</a> and ProPublica wrote <a class="reference external" href="https://www.propublica.org/article/technical-response-to-northpointe">a response to Northpointe</a>.</p>
-<p>Researchers then used this dataset to do a lot of different studies a few highlights include:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.propublica.org/article/bias-in-criminal-risk-scores-is-mathematically-inevitable-researchers-say">Fairness definitions are incompatible</a> more on this in the <a class="reference external" href="https://fairmlbook.org/classification.html">Fair Machine Learning Textbook Classification Chapter</a></p></li>
-<li><p><a class="reference external" href="https://advances.sciencemag.org/content/4/1/eaao5580">COMPAS is only as accurate and fair as untrained people</a> <a class="reference external" href="https://advances-sciencemag-org.uri.idm.oclc.org/content/4/1/eaao5580">same paper via URI library access</a></p></li>
-<li><p><a class="reference external" href="https://corels.eecs.harvard.edu/index.html">CORELS</a> is a system that produces a list of rules to predict an outcome, when applied to this data it learns a similarly accurate model with only 3 rules (label=1 is predict recidivism)</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">({</span><span class="n">Prior</span><span class="o">-</span><span class="n">Crimes</span><span class="o">&gt;</span><span class="mi">3</span><span class="p">})</span> <span class="n">then</span> <span class="p">({</span><span class="n">label</span><span class="o">=</span><span class="mi">1</span><span class="p">})</span>
-<span class="k">else</span> <span class="k">if</span> <span class="p">({</span><span class="n">Age</span><span class="o">=</span><span class="mi">18</span><span class="o">-</span><span class="mi">22</span><span class="p">})</span> <span class="n">then</span> <span class="p">({</span><span class="n">label</span><span class="o">=</span><span class="mi">1</span><span class="p">})</span>
-<span class="k">else</span> <span class="p">({</span><span class="n">label</span><span class="o">=</span><span class="mi">0</span><span class="p">})</span>
+  <div class="section" id="tutorial-logistics">
+<h1>Tutorial Logistics<a class="headerlink" href="#tutorial-logistics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">compaslab</span>
 </pre></div>
 </div>
-<p>There are, however, risks to drawing conclusions from this dataset.</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/2106.05498">it’s COMPASlicated</a></p></li>
-</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tut</span> <span class="o">=</span> <span class="n">compaslab</span><span class="o">.</span><span class="n">Tutorial</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="data-analysis-python">
-<h2>Data Analysis, Python,<a class="headerlink" href="#data-analysis-python" title="Permalink to this headline">¶</a></h2>
-<p>For more on general data analysis with python, see Data Carpentry’s [Social Sciences] or [Ecology] lesson.</p>
-<p>The <span class="xref myst">code</span> for this activity is hosted on <span class="xref myst">GitHub</span> if you make an account, you can contribute back your ideas or comment on others’ ideas or suggestions.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tut</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tut</span><span class="o">.</span><span class="n">next</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adding-a-new-tutorial">
+<h2>Adding a new tutorial<a class="headerlink" href="#adding-a-new-tutorial" title="Permalink to this headline">¶</a></h2>
+<p>Add a notebook file to <code class="docutils literal notranslate"><span class="pre">compaslab/activities</span></code> directory in the <a class="reference external" href="https://github.com/ml4sts/outreach-compas">repository</a></p>
 </div>
 </div>
 
@@ -285,8 +277,7 @@ They also published a more detailed <a class="reference external" href="https://
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="cheatsheet.html" title="previous page">Cheatsheet</a>
-    <a class='right-next' id="next-link" href="tutorial.html" title="next page">Tutorial Logistics</a>
+    <a class='left-prev' id="prev-link" href="resources.html" title="previous page">Additional Reading</a>
 
         </div>
         
