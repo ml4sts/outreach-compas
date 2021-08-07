@@ -12,4 +12,4 @@ parts:
     - file: ../compaslab/activities/stem_academy
   - caption: About
     chapters:
-    - files: tutorial
+    - file: tutorial
