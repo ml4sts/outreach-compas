@@ -23,10 +23,9 @@ class Tutorial:
 
     def __init__(self,filename):
         fmt = filename.split('.')[-1]
-        # builtin_activities = importlib.resources.files()
-        # print(builtin_activities)
-        # if it's a builtin activity, update the filename to be the full path
-        # print(pkgrs.resource_listdir(__name__,''))
+
+        # # if it's a builtin activity, update the filename to be the full path
+        # print(pkgrs.resource_listdir(__name__,'activities'))
         if pkgrs.resource_exists(__name__,os.path.join('activities',filename)):
             filename = pkgrs.resource_stream(__name__,
                                 os.path.join('activities',filename))

@@ -1,1 +1,1 @@
-recursive-include compaslab/activities
+recursive-include compaslab/activities *
