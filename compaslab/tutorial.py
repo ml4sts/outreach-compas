@@ -22,6 +22,9 @@ class Tutorial:
     '''
 
     def __init__(self,filename):
+        '''
+        instantiate the object by reading in a notebook file
+        '''
         fmt = filename.split('.')[-1]
 
         # # if it's a builtin activity, update the filename to be the full path
@@ -36,14 +39,23 @@ class Tutorial:
         self.current = 0
 
     def next(self):
+        '''
+        show the next cell
+        '''
         self.show(self.current)
         self.current += 1
 
     def start(self):
+        '''
+        start the tutorial
+        '''
         self.show(0)
         self.current += 1
 
     def show(self,n):
+        '''
+        display the nth cell
+        '''
         cell = self.tutorial[n]
         if cell.cell_type == 'markdown':
             display(Markdown(cell.source))

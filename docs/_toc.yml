@@ -3,7 +3,13 @@
 
 format: jb-book
 root: index
-chapters:
-- file: activity
-- file: cheatsheet
-- file: resources
+parts:
+  - caption: Activity
+    chapters:
+    - file: activity
+    - file: cheatsheet
+    - file: resources
+    - file: ../compaslab/activities/stem_academy
+  - caption: About
+    chapters:
+    - files: tutorial
