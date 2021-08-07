@@ -4,27 +4,23 @@ import scipy
 
 ### Utility functions for the COMPAS tutorial ###
 
-from IPython.display import display, Markdown
-
-def mdshow(file):
-    display(Markdown(file))
 
 def clean_compas(df):
-    
-    # Clean the compas dataset according to the description provided by ProPublica of their analysis. 
+
+    # Clean the compas dataset according to the description provided by ProPublica of their analysis.
     # In the original notebook the authors state:
 
     # There are a number of reasons remove rows because of missing data:
-        
-        # If the charge date of a defendants Compas scored crime was not within 30 days from when the person was arrested, 
+
+        # If the charge date of a defendants Compas scored crime was not within 30 days from when the person was arrested,
         # we assume that because of data quality reasons, that we do not have the right offense.
 
         # We coded the recidivist flag -- `is_recid` -- to be -1 if we could not find a compas case at all.
 
-        # In a similar vein, ordinary traffic offenses -- those with a `c_charge_degree` of 'O' -- will not result in Jail time 
+        # In a similar vein, ordinary traffic offenses -- those with a `c_charge_degree` of 'O' -- will not result in Jail time
         # are removed (only two of them).
- 
-        # We filtered the underlying data from Broward county to include only those rows representing people who had either 
+
+        # We filtered the underlying data from Broward county to include only those rows representing people who had either
         # recidivated in two years, or had at least two years outside of a correctional facility.
 
     # ix is the index of variables we want to keep.

@@ -27,8 +27,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import itertools
 from sklearn.metrics import roc_curve
-from utilities import *
-%matplotlib inline
 import warnings
 warnings.filterwarnings('ignore')
 ```
@@ -38,44 +36,21 @@ warnings.filterwarnings('ignore')
 The dataset consists of COMPAS scores assigned to defendants over two years 2013-2014 in Broward County, Florida. These scores are determined by a proprietary algorithm designed to evaluate a persons recidivism risk - the likelihood that they will reoffend. Risk scoring algorithms are widely used by judges to inform their scentencing and bail decisions in the criminal justice system in the United States. The original ProPublica analysis identified a number of fairness concerns around the use of COMPAS scores, including that ''black defendants were nearly twice as likely to be misclassified as higher risk compared to their white counterparts.'' Please see the full article for further details.
 
 ```{code-cell} ipython3
-df = pd.read_csv("https://github.com/propublica/compas-analysis/raw/master/compas-scores-two-years.csv",
+df_pp = pd.read_csv("https://github.com/propublica/compas-analysis/raw/master/compas-scores-two-years.csv",
                  header=0).set_index('id')
 
 print(list(df))
 print(df.head())
 ```
 
-```{code-cell} ipython3
-df.to_csv('data/compas.csv')
-```
 
 ### Data Cleaning
 
-For this analysis, we will restrict ourselves to only a few features, and clean the dataset according to the methods using in the original ProPublica analysis.
+For this analysis, we will restrict ourselves to only a few features, and clean the dataset according to the methods using in the original ProPublica analysis, we can import that copy version of the data directly.
 
-Details of the cleaning method can be found in the utilities file.
-
-use `%load code/clean` to clean the data.
-
-Discuss the changes:
-- how much data was removed?
-- note which columns were retained
-
-Continue your eda with `mdshow('code/explore.md')`
 
 ```{code-cell} ipython3
-# Select features that will be analyzed
-features_to_keep = ['age', 'c_charge_degree', 'race', 'age_cat', 'score_text', 'sex', 'priors_count',
-                    'days_b_screening_arrest', 'decile_score', 'is_recid', 'two_year_recid', 'c_jail_in',
-                    'c_jail_out']
-df = df[features_to_keep]
-df = clean_compas(df)
-df.head()
-print("\ndataset shape (rows, columns)", df.shape)
-```
-
-```{code-cell} ipython3
-df.to_csv('data/compas_c.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_c.csv')
 ```
 
 ## Data Exploration
@@ -123,11 +98,8 @@ race_score_table = df.groupby([]).size().reset_index().pivot(index='',columns=''
 (100*/.sum()).transpose()
 ```
 
-_or get more help with `%load code/racetable`_
-
 then make a bar plot (quickest way is to use pandas plot with `figsize=[12,7]` to make it bigger, plot type is indicated by the `kind` parameter)
 
-Next steps at `mdshow('code/gapexplore')`
 
 ```{code-cell} ipython3
 race_score_table = df.groupby(['race','decile_score']).size().reset_index().pivot(
@@ -143,8 +115,8 @@ race_score_table.plot(kind='bar')
 
 As you can observe, there is a large discrepancy. Does this change when we condition on other variables?
 
-1. Look at how priors are distributed. Follow what you did above for score by race or use `%load code/priors` for help
-1. Look at how scores are distributed for those with more than two priors (`%load code/2priorscores`)
+1. Look at how priors are distributed. Follow what you did above for score by race (or continue for help)
+1. Look at how scores are distributed for those with more than two priors
 1. What about with less than two priors ?(you can copy or import again the above and modify it)
 1. Look at first time (use `priors_count`) felons (`c_charge_degree` of `F`) under 25. How is this different?
 
@@ -162,24 +134,13 @@ score_2priors.plot(kind='bar',figsize=[15,7])
 
 ## What happens when we take actual 2-year recidivism values into account? Are the predictions fair?
 
-First quantize the data
-`%load code/quantize`
+First, we're going to load a different version of the data, it's quantized. Then look at the correlation between the quantized score, the decile score and the actual recidivism.
 
-First, let's look at the correlation between the quantized score, the decile score and the actual recidivism.
-
-```
-# measure with high-low score
-print(dfQ[['two_year_recid','score_text']].corr())
-
-# measure with decile_score
-print(dfQ[['two_year_recid','decile_score']].corr())
-```
 
 The correlation is not that high. How can we evaluate whether the predictions made by the COMPAS scores are fair, especially considering that they do not predict recidivism rates well?
 
 ```{code-cell} ipython3
-# %load code/quantize
-dfQ = pd.load_csv('data/compas_cq.csv')
+dfQ = pd.load_csv('https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_cq.csv')
 ```
 
 ```{code-cell} ipython3
@@ -215,7 +176,7 @@ Disparate impact is a legal concept used to describe situations when an entity s
 
 To demonstrate cases of disparate impact, the Equal Opportunity Commission (EEOC) proposed "rule of thumb" is known as the [The 80% rule](https://en.wikipedia.org/wiki/Disparate_impact#The_80.25_rule).
 
-Feldman et al. [4](#References) adapted a fairness metric from this  principle. For our application, it states that the percent of defendants predicted to be high risk in each protected group (in this case whites and african-americans) should be within 80% of each other.
+Feldman et al. [4](#References) adapted a fairness metric from this  principle. For our application, it states that the percent of defendants predicted to be high risk in each protected group (in this case whites and African-Americans) should be within 80% of each other.
 
 Let's evaluate this standard for the COMPAS data.
 
