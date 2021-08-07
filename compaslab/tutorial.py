@@ -22,13 +22,16 @@ class Tutorial:
     '''
 
     def __init__(self,filename):
+        fmt = filename.split('.')[-1]
         # builtin_activities = importlib.resources.files()
         # print(builtin_activities)
         # if it's a builtin activity, update the filename to be the full path
-        if pkgrs.resource_exists(__name__,filename):
-            filename = pkgrs.resource_stream(__name__,filename)
+        # print(pkgrs.resource_listdir(__name__,''))
+        if pkgrs.resource_exists(__name__,os.path.join('activities',filename)):
+            filename = pkgrs.resource_stream(__name__,
+                                os.path.join('activities',filename))
 
-        fmt = filename.split('.')[-1]
+
 
         self.tutorial = tutorial_readers[fmt](filename)
 
