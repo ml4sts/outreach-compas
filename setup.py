@@ -9,4 +9,5 @@ setup(name='compaslab',
       license='MIT',
       packages=['compaslab'],
       zip_safe=False,
+      include_package_data = True,
       install_requires=['Numpy', 'Pandas', 'Seaborn', 'Jupytext'])
