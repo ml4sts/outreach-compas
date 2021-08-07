@@ -25,7 +25,7 @@ class Tutorial:
         fmt = filename.split('.')[-1]
 
         # # if it's a builtin activity, update the filename to be the full path
-        # print(pkgrs.resource_listdir(__name__,'activities'))
+        print(pkgrs.resource_listdir(__name__,'activities'))
         if pkgrs.resource_exists(__name__,os.path.join('activities',filename)):
             filename = pkgrs.resource_stream(__name__,
                                 os.path.join('activities',filename))
