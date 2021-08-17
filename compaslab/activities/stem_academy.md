@@ -43,11 +43,9 @@ print(list(df))
 print(df.head())
 ```
 
-
 ### Data Cleaning
 
 For this analysis, we will restrict ourselves to only a few features, and clean the dataset according to the methods using in the original ProPublica analysis, we can import that copy version of the data directly.
-
 
 ```{code-cell} ipython3
 df = pd.read_csv('https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_c.csv')
@@ -76,7 +74,7 @@ In particular, as in the ProPublica analysis, we are interested in the implicati
 
 
 1. Use `value_counts` to look at how much data is available for each race
-2. filter to keep data from the two larges groups (help via `%load filter`)
+2. filter to keep data from the two larges groups
 
 ```{code-cell} ipython3
 df['race'].value_counts()
@@ -99,7 +97,6 @@ race_score_table = df.groupby([]).size().reset_index().pivot(index='',columns=''
 ```
 
 then make a bar plot (quickest way is to use pandas plot with `figsize=[12,7]` to make it bigger, plot type is indicated by the `kind` parameter)
-
 
 ```{code-cell} ipython3
 race_score_table = df.groupby(['race','decile_score']).size().reset_index().pivot(
@@ -136,12 +133,11 @@ score_2priors.plot(kind='bar',figsize=[15,7])
 
 First, we're going to load a different version of the data, it's quantized. Then look at the correlation between the quantized score, the decile score and the actual recidivism.
 
-
-The correlation is not that high. How can we evaluate whether the predictions made by the COMPAS scores are fair, especially considering that they do not predict recidivism rates well?
-
 ```{code-cell} ipython3
 dfQ = pd.load_csv('https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_cq.csv')
 ```
+
+The correlation is not that high. How can we evaluate whether the predictions made by the COMPAS scores are fair, especially considering that they do not predict recidivism rates well?
 
 ```{code-cell} ipython3
 # measure with high-low score
@@ -332,8 +328,6 @@ df['age_cat'].value_counts()
 ```
 
 ```{code-cell} ipython3
-# %load code/corels
-
 def corels_rule(row):
     if row['priors_count'] > 3:
         return True
