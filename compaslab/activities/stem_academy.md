@@ -14,12 +14,19 @@ kernelspec:
 
 # Replicating Propbulica's COMPAS Audit
 
++++ {"lecturetools": {"type": "slide", "name": "title"}}
 ## Why COMPAS?
 
 
 Propublica started the COMPAS Debate with the article [Machine Bias](#References).  With their article, they also released details of their methodology and their [data and code](https://github.com/propublica/compas-analysis).  This presents a real data set that can be used for research on how data is used in a criminal justice setting without researchers having to perform their own requests for information, so it has been used and reused a lot of times.
 
 ```{code-cell} ipython3
+---
+lecture_tools:
+  name: import
+  display: always
+---
+
 import numpy as np
 import pandas as pd
 import scipy
@@ -36,9 +43,21 @@ warnings.filterwarnings('ignore')
 The dataset consists of COMPAS scores assigned to defendants over two years 2013-2014 in Broward County, Florida. These scores are determined by a proprietary algorithm designed to evaluate a persons recidivism risk - the likelihood that they will reoffend. Risk scoring algorithms are widely used by judges to inform their scentencing and bail decisions in the criminal justice system in the United States. The original ProPublica analysis identified a number of fairness concerns around the use of COMPAS scores, including that ''black defendants were nearly twice as likely to be misclassified as higher risk compared to their white counterparts.'' Please see the full article for further details.
 
 ```{code-cell} ipython3
+---
+lecture_tools:
+  name: data
+  display: always
+---
 df_pp = pd.read_csv("https://github.com/propublica/compas-analysis/raw/master/compas-scores-two-years.csv",
                  header=0).set_index('id')
+```
 
+```{code-cell} ipython3
+---
+lecture_tools:
+  name: examine
+  display: auto
+---
 print(list(df))
 print(df.head())
 ```
@@ -47,7 +66,13 @@ print(df.head())
 
 For this analysis, we will restrict ourselves to only a few features, and clean the dataset according to the methods using in the original ProPublica analysis, we can import that copy version of the data directly.
 
+
 ```{code-cell} ipython3
+---
+lecture_tools:
+  name: cleandata
+  display: always
+---
 df = pd.read_csv('https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_c.csv')
 ```
 
@@ -80,7 +105,21 @@ In particular, as in the ProPublica analysis, we are interested in the implicati
 df['race'].value_counts()
 ```
 
-```{code-cell} ipython3
+```{code-cell} ipython3---
+lecture_tools:
+  name: filter
+  display: template
+---
+
+df = df.loc[df['race'].isin(['',''])]
+```
+
+```{code-cell} ipython3---
+lecture_tools:
+  name: filter
+  display: solution
+---
+
 df = df.loc[df['race'].isin(['African-American','Caucasian'])]
 ```
 
