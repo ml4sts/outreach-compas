@@ -11,7 +11,7 @@ from datetime import datetime
 
 
 tutorial_readers = {'ipynb': lambda fn : nbformat.read(fn, as_version =4).cells,
-                    'md': lambda fn: jupytext.read(fn).cells}
+                    'md': lambda fn: jupytext.read(fn)['cells']}
 
 
 builtin_activities = ['stem_academy']
