@@ -87,3 +87,9 @@ class Tutorial:
             os.remove(tmpfile)
 
         os.removedirs(self.tmp_dir)
+
+
+    def parse(self):
+        '''
+        parse the loaded notebook into instructions, hints, templates
+        '''
