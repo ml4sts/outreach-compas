@@ -42,7 +42,7 @@
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
@@ -233,16 +233,20 @@
 <h1>Tutorial Logistics<a class="headerlink" href="#tutorial-logistics" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>import the package</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">compaslab</span>
 </pre></div>
 </div>
+<p>load the activity</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tut</span> <span class="o">=</span> <span class="n">compaslab</span><span class="o">.</span><span class="n">Tutorial</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>initialize</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tut</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tut</span><span class="o">.</span><span class="n">next</span>
+<p>proceed</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tut</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
