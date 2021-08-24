@@ -17,7 +17,7 @@ kernelspec:
 ## Why COMPAS?
 
 
-Propublica started the COMPAS Debate with the article [Machine Bias](#References).  With their article, they also released details of their methodology and their [data and code](https://github.com/propublica/compas-analysis).  This presents a real data set that can be used for research on how data is used in a criminal justice setting without researchers having to perform their own requests for information, so it has been used and reused a lot of times.
+Propublica started the COMPAS Debate with the article [Machine Bias](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencin).  With their article, they also released details of their methodology and their [data and code](https://github.com/propublica/compas-analysis).  This presents a real data set that can be used for research on how data is used in a criminal justice setting without researchers having to perform their own requests for information, so it has been used and reused a lot of times.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -39,8 +39,8 @@ The dataset consists of COMPAS scores assigned to defendants over two years 2013
 df_pp = pd.read_csv("https://github.com/propublica/compas-analysis/raw/master/compas-scores-two-years.csv",
                  header=0).set_index('id')
 
-print(list(df))
-print(df.head())
+print(list(df_pp))
+print(df_pp.head())
 ```
 
 ### Data Cleaning
@@ -49,6 +49,14 @@ For this analysis, we will restrict ourselves to only a few features, and clean 
 
 ```{code-cell} ipython3
 df = pd.read_csv('https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_c.csv')
+```
+
+Compare the size of the clean data to the whole dataset, how much did it change?
+
+Can you figure out which columns were kept?
+
+```{code-cell} ipython3
+df.size, df_pp.size
 ```
 
 ## Data Exploration
