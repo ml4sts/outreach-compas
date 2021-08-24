@@ -12,19 +12,24 @@ kernelspec:
   name: python3
 ---
 
++++ {"lecture_tools": {"block": "intro", "type": "narrative"}}
 # Replicating Propbulica's COMPAS Audit
 
-+++ {"lecturetools": {"type": "slide", "name": "title"}}
+
 ## Why COMPAS?
 
 
 Propublica started the COMPAS Debate with the article [Machine Bias](#References).  With their article, they also released details of their methodology and their [data and code](https://github.com/propublica/compas-analysis).  This presents a real data set that can be used for research on how data is used in a criminal justice setting without researchers having to perform their own requests for information, so it has been used and reused a lot of times.
 
++++ {"lecture_tools": {"block": "setup", "type": "instructions"}}
+
+First, we need to import some common libraries,
+
 ```{code-cell} ipython3
 ---
 lecture_tools:
-  name: import
-  display: always
+  block: setup
+  type: template
 ---
 
 import numpy as np
@@ -38,44 +43,83 @@ import warnings
 warnings.filterwarnings('ignore')
 ```
 
++++ {"lecture_tools": {"block": "data", "type": "narrative"}}
 ## Propublica COMPAS Data
 
-The dataset consists of COMPAS scores assigned to defendants over two years 2013-2014 in Broward County, Florida. These scores are determined by a proprietary algorithm designed to evaluate a persons recidivism risk - the likelihood that they will reoffend. Risk scoring algorithms are widely used by judges to inform their scentencing and bail decisions in the criminal justice system in the United States. The original ProPublica analysis identified a number of fairness concerns around the use of COMPAS scores, including that ''black defendants were nearly twice as likely to be misclassified as higher risk compared to their white counterparts.'' Please see the full article for further details.
+The dataset consists of COMPAS scores assigned to defendants over two years 2013-2014 in Broward County, Florida, it was released by Propublica in a [GitHub Repository](https://github.com/propublica/compas-analysis/). These scores are determined by a proprietary algorithm designed to evaluate a persons recidivism risk - the likelihood that they will reoffend. Risk scoring algorithms are widely used by judges to inform their sentencing and bail decisions in the criminal justice system in the United States. The original ProPublica analysis identified a number of fairness concerns around the use of COMPAS scores, including that ''black defendants were nearly twice as likely to be misclassified as higher risk compared to their white counterparts.'' Please see the full article for further details. Use pandas to read in the data and set the `id` column to the index.
 
 ```{code-cell} ipython3
 ---
 lecture_tools:
-  name: data
-  display: always
+  block: data
+  type: template
 ---
-df_pp = pd.read_csv("https://github.com/propublica/compas-analysis/raw/master/compas-scores-two-years.csv",
+# replace the __ with correct values
+df_pp = pd.__('__',
+                 header=0).(__)
+```
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: data
+  type: hint
+---
+# find the csv file in the repo and use the raw button on github to get the compatible url
+df_pp = pd.read_csv("",
                  header=0).set_index('id')
 ```
 
 ```{code-cell} ipython3
 ---
 lecture_tools:
-  name: examine
-  display: auto
+  block: data
+  type: solution
+---
+df_pp = pd.read_csv("https://github.com/propublica/compas-analysis/raw/master/compas-scores-two-years.csv",
+                 header=0).set_index('id')
+```
+
++++ {"lecture_tools": {"block": "examine", "type": "instructions"}}
+Look at the list of columns and the first few rows to get an idea of what the dataset looks like.
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: examine
+  type: solution
 ---
 print(list(df))
 print(df.head())
 ```
 
+
++++ {"lecture_tools": {"block": "cleandata", "type": "narrative"}}
 ### Data Cleaning
 
-For this analysis, we will restrict ourselves to only a few features, and clean the dataset according to the methods using in the original ProPublica analysis, we can import that copy version of the data directly.
+For this analysis, we will restrict ourselves to only a few features, and clean the dataset according to the methods using in the original ProPublica analysis.
 
+For this tutorial, we've prepared a cleaned copy of the data, that we can import directly.
 
 ```{code-cell} ipython3
 ---
 lecture_tools:
-  name: cleandata
-  display: always
+  block: cleandata
+  type: template
+---
+df = pd.__('https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_c.csv')
+```
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: cleandata
+  type: solution
 ---
 df = pd.read_csv('https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_c.csv')
 ```
 
++++ {"lecture_tools": {"block": "explore", "type": "narrative"}}
 ## Data Exploration
 
 Next we provide a few ways to look at the relationships between the attributes in the dataset. Here is an explanation of these values:
@@ -97,32 +141,53 @@ Next we provide a few ways to look at the relationships between the attributes i
 
 In particular, as in the ProPublica analysis, we are interested in the implications for the treatment of different groups as defined by some **protected attribute**. In particular we will consider race as the protected attribute in our analysis. Next we look at the number of entries for each race.
 
++++ {"lecture_tools": {"block": "explore", "type": "instructions"}}
 
 1. Use `value_counts` to look at how much data is available for each race
-2. filter to keep data from the two larges groups
 
 ```{code-cell} ipython3
-df['race'].value_counts()
+---
+lecture_tools:
+  block: explore
+  type: template
+---
+df['__'].__
 ```
 
-```{code-cell} ipython3---
+```{code-cell} ipython3
+---
 lecture_tools:
-  name: filter
-  display: template
+  block: explore
+  type: solution
+---
+df['race'].value_counts()
+```
++++ {"lecture_tools": {"block": "explore", "type": "instructions"}}
+
+2. filter to keep data from the two larges groups
+
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: filter
+  type: template
 ---
 
 df = df.loc[df['race'].isin(['',''])]
 ```
 
-```{code-cell} ipython3---
+```{code-cell} ipython3
+---
 lecture_tools:
-  name: filter
-  display: solution
+  block: explore
+  type: solution
 ---
 
 df = df.loc[df['race'].isin(['African-American','Caucasian'])]
 ```
 
++++ {"lecture_tools": {"block": "distribution", "type": "narrative"}}
 ### COMPAS score distribution
 
 Let's look at the COMPAS score distribution between African-Americans and Caucasians (matches the one in the ProPublica article).
@@ -138,6 +203,11 @@ race_score_table = df.groupby([]).size().reset_index().pivot(index='',columns=''
 then make a bar plot (quickest way is to use pandas plot with `figsize=[12,7]` to make it bigger, plot type is indicated by the `kind` parameter)
 
 ```{code-cell} ipython3
+---
+lecture_tools:
+  block: distribution
+  type: solution
+---
 race_score_table = df.groupby(['race','decile_score']).size().reset_index().pivot(
                                 index='decile_score',columns='race',values=0)
 
@@ -145,48 +215,108 @@ race_score_table = df.groupby(['race','decile_score']).size().reset_index().pivo
 (100*race_score_table/race_score_table.sum()).transpose()
 ```
 
++++ {"lecture_tools": {"block": "distributionviz", "type": "narrative"}}
+ To see this more clearly, make a bar plot
+
 ```{code-cell} ipython3
+---
+lecture_tools:
+ block: distributionviz
+ type: solution
+---
+race_score_table.__(kind='__')
+```
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: distributionviz
+  type: solution
+---
 race_score_table.plot(kind='bar')
 ```
+
++++ {"lecture_tools": {"block": "priors", "type": "narrative"}}
 
 As you can observe, there is a large discrepancy. Does this change when we condition on other variables?
 
 1. Look at how priors are distributed. Follow what you did above for score by race (or continue for help)
-1. Look at how scores are distributed for those with more than two priors
-1. What about with less than two priors ?(you can copy or import again the above and modify it)
-1. Look at first time (use `priors_count`) felons (`c_charge_degree` of `F`) under 25. How is this different?
+
 
 ```{code-cell} ipython3
+---
+lecture_tools:
+  block: priors
+  type: solution
+---
 priors = df.groupby(['race','priors_count']).size().reset_index().pivot(index='priors_count',columns='race',values=0)
 priors.plot(kind='bar',figsize=[12,7])
 ```
++++ {"lecture_tools": {"block": "priors2", "type": "narrative"}}
+1. Look at how scores are distributed for those with more than two priors
+1. (bonus) What about with less than two priors ?(you can copy or import again the above and modify it)
+1. (bonus) Look at first time (use `priors_count`) felons (`c_charge_degree` of `F`) under 25. How is this different?
 
 ```{code-cell} ipython3
+---
+lecture_tools:
+  block: priors2
+  type: solution
+---
+
 df_2priors = df.loc[df['priors_count']>=2]
 score_2priors = df_2priors.groupby(['race','decile_score']).size().reset_index().pivot(
     index='decile_score',columns='race',values=0)
 score_2priors.plot(kind='bar',figsize=[15,7])
 ```
 
++++ {"lecture_tools": {"block": "quantize", "type": "narrative"}}
 ## What happens when we take actual 2-year recidivism values into account? Are the predictions fair?
 
 First, we're going to load a different version of the data, it's quantized. Then look at the correlation between the quantized score, the decile score and the actual recidivism.
 
 ```{code-cell} ipython3
+---
+lecture_tools:
+  block: quantize
+  type: solution
+---
+
 dfQ = pd.load_csv('https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_cq.csv')
 ```
 
-The correlation is not that high. How can we evaluate whether the predictions made by the COMPAS scores are fair, especially considering that they do not predict recidivism rates well?
++++ {"lecture_tools": {"block": "correlationtext", "type": "narrative"}}
+
+Is the ground truth correlated to the high/low rating (`score_text`)?
 
 ```{code-cell} ipython3
+---
+lecture_tools:
+  block: correlationtext
+  type: solution
+---
 # measure with high-low score
 dfQ[['two_year_recid','score_text']].corr()
 ```
 
++++ {"lecture_tools": {"block": "correlationdecile", "type": "narrative"}}
+
+Is the ground truth correlated to the `decile_score`rating?
 ```{code-cell} ipython3
-# measure with decile_score
+---
+lecture_tools:
+  block: correlationdecile
+  type: solution
+---
+
 dfQ[['two_year_recid','decile_score']].corr()
 ```
+
+
+
++++ {"lecture_tools": {"block": "fairness", "type": "narrative"}}
+
+The correlation is not that high. How can we evaluate whether the predictions made by the COMPAS scores are fair, especially considering that they do not predict recidivism rates well?
 
 ##  Fairness Metrics
 
@@ -205,6 +335,8 @@ Here we will cover 3 notions of fairness and present ways to measure them:
 
 For the rest of our analysis we will use a binary outcome - COMPAS score <= 4 is LOW RISK, >4 is HIGH RISK.
 
++++ {"lecture_tools": {"block": "disparateimpact", "type": "narrative"}}
+
 ### Disparate Impact
 
 Disparate impact is a legal concept used to describe situations when an entity such as an employer *inadvertently* discriminates gainst a certain protected group. This is distinct from *disparate treatment* where discrimination is intentional.
@@ -216,6 +348,12 @@ Feldman et al. [4](#References) adapted a fairness metric from this  principle. 
 Let's evaluate this standard for the COMPAS data.
 
 ```{code-cell} ipython3
+---
+lecture_tools:
+  block: disparateimpact
+  type: solution
+---
+
 #  Let's measure the disparate impact according to the EEOC rule
 means_score = dfQ.groupby(['score_text','race']).size().unstack().reset_index()
 means_score = means_score/means_score.sum()
@@ -228,11 +366,19 @@ C_with_high_score = means_score.loc[1,'Caucasian']
 C_with_high_score/AA_with_high_score
 ```
 
++++ {"lecture_tools": {"block": "disparateimpact", "type": "interpretation"}}
 This ratio is below .8, so there is disparate impact by this rule.  (Taking the priveleged group and the undesirable outcome instead of the disadvantaged group and the favorable outcome).
 
++++ {"lecture_tools": {"block": "ditrue", "type": "narrative"}}
 What if we apply the same rule to the **true** two year rearrest instead of the quantized COMPAS score?
 
 ```{code-cell} ipython3
+---
+lecture_tools:
+  block: ditrue
+  type: solution
+---
+
 means_2yr = dfQ.groupby(['two_year_recid','race']).size().unstack()
 means_2yr = means_2yr/means_2yr.sum()
 means_2yr
@@ -243,10 +389,13 @@ C_with_high_score = means_2yr.loc[1,'Caucasian']
 C_with_high_score/AA_with_high_score
 ```
 
++++ {"lecture_tools": {"block": "ditrue", "type": "interpretation"}}
+
 There is a difference in re-arrest, but not as high as assigned by the COMPAS scores. This is still a disparate impact of the actual arrests (since this not necessarily accurate as a recidivism rate, but it is true rearrest).
 
 Now let's measure the difference in scores when we consider both the COMPAS output and true recidivism.
 
++++ {"lecture_tools": {"block": "calibration", "type": "narrative"}}
 ### Calibration
 
 A discussion of using calibration to verify the fairness of a model can be found in Northpoint's (now: Equivant) response to the ProPublica article [6](#References).
@@ -265,6 +414,12 @@ $$\mathsf{cal} \triangleq \frac{\mathbb{P}\left(Y=1\mid S_Q=s,R=\mbox{African-Am
 1. Which metric do you think is better so far?
 
 ```{code-cell} ipython3
+---
+lecture_tools:
+  block: calibration
+  type: solution
+---
+
 # compute averages
 dfAverage = dfQ.groupby(['race','score_text'])['two_year_recid'].mean().unstack()
 
@@ -276,16 +431,23 @@ print('Calibration: %f' % cal)
 print('Calibration in percentage: %f%%' % calpercent)
 ```
 
++++ {"lecture_tools": {"block": "calibration", "type": "interpretation"}}
 The difference looks much smaller than before. The problem of the above calibration measure is that it depends on the threshold on which we quantized the scores $S_Q$.
 
-In order to mitigate this, ine might use a variation of this measure called *predictive parity.* In this example, we define predictive parity as
+In order to mitigate this, one might use a variation of this measure called *predictive parity.* In this example, we define predictive parity as
 
 $$\mathsf{PP}(s) \triangleq \frac{\mathbb{P}\left(Y=1\mid S\geq s,R=\mbox{African-American} \right)}{\mathbb{P}\left(Y=1 \mid S\geq s,R=\mbox{Caucasian} \right)},$$
 where $S$ is the original score.
 
++++ {"lecture_tools": {"block": "plotthresh", "type": "narrative"}}
 We plot $\mathsf{PP}(s) $ for $s$ from 1 to 10. Note how predictive parity depends significantly on the threshold.
 
 ```{code-cell} ipython3
+---
+lecture_tools:
+  block: plotthresh
+  type: solution
+---
 # aux function for thresh score
 def threshScore(x,s):
     if x>=s:
@@ -311,6 +473,7 @@ plt.ylabel('Predictive Parity (percentage)')
 plt.title('Predictive parity for different thresholds\n(warning: no error bars)')
 ```
 
++++ {"lecture_tools": {"block": "eqodds", "type": "narrative"}}
 ### Equalized Odds
 
 The last fairness metric we consider is based on the difference in *error rates* between groups. Hardt et al. [5](#References) propose to look at the difference in the true positive and false positive rates for each group. This aligns with the analysis performed by Propublica. We can examine these values looking at is the ROC for each group. We normalize the score between 0 and 1. The ROC thresholds produced by `scikitlearn` are the same.
@@ -320,6 +483,11 @@ The last fairness metric we consider is based on the difference in *error rates*
 Discuss these results and copmare how these metrics show that there is (or is not) a disparity.
 
 ```{code-cell} ipython3
+---
+lecture_tools:
+  block: eqodds
+  type: solution
+---
 # normalize decile score
 max_score = dfQ['decile_score'].max()
 min_score = dfQ['decile_score'].min()
@@ -345,6 +513,7 @@ plt.title('ROC')
 plt.legend(['African-American','Caucasian'])
 ```
 
++++ {"lecture_tools": {"block": "corels", "type": "narrative"}}
 # Extension: CORELS
 
 
@@ -357,16 +526,42 @@ else if ({Age=18-22}) then ({label=1})
 else ({label=0})
 ```
 
-Let's investigate how that score compares.
++++ {"lecture_tools": {"block": "corels", "type": "instructions"}}
+
+Let's investigate how the rule learned by CORELS compares.
 1. Write a function that takes one row of the data frame and computes the corels function
 1. Use `df.apply` to apply your function and add a column to the data frame with the corels score
-1. Evaluate the CORELS prediction with respect to accuracy, and fairnss follwing the above
+1. Evaluate the CORELS prediction with respect to accuracy, and fairness following the above
 
 ```{code-cell} ipython3
-df['age_cat'].value_counts()
+---
+lecture_tools:
+  block: calibration
+  type: solution
+---
+def corels_rule(row):
+    if ___:
+        return __
+    elif ___:
+        return __
+    else:
+        return False
+
+df['corels'] = df.apply(____,axis=1)
+
+#  Let's measure the disparate impact according to the EEOC rule
+means_corel = df.groupby(['corels','race']).size().unstack().reset_index()
+means_corel = means_corel/means_corel.sum()
+means_corel
 ```
 
+
 ```{code-cell} ipython3
+---
+lecture_tools:
+  block: calibration
+  type: solution
+---
 def corels_rule(row):
     if row['priors_count'] > 3:
         return True

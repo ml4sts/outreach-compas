@@ -53,28 +53,27 @@ class Tutorial:
         '''
         show the next cell
         '''
-        self.show(self.current)
+        self.show(self.tutorial[self.current])
         self.current += 1
 
     def start(self):
         '''
         start the tutorial
         '''
-        self.show(0)
+        self.show(self.tutorial[0])
         self.current = 1
 
-    def show(self,n):
+    def show(self,cell):
         '''
-        display the nth cell
+        display a cell
         '''
-        cell = self.tutorial[n]
+
         if cell.cell_type == 'markdown':
             display(Markdown(cell.source))
         if cell.cell_type =='code':
-            cell_fname = os.path.join(self.tmp_dir,'cell' +str(n) +'.py')
+            cell_fname = os.path.join(self.tmp_dir,'cell'+str(self.current) +'.py')
             with open (cell_fname,'w') as f:
                 f.write(cell.source)
-            # load_cmd = 'cell' + str(n)
             get_ipython().run_line_magic('load',cell_fname)
             self.tmp_file_list.append(cell_fname)
 
@@ -89,7 +88,59 @@ class Tutorial:
         os.removedirs(self.tmp_dir)
 
 
-    def parse(self):
+def get_attr(cell,attr):
+    '''
+    from a notebook cell object, pull a lt meta field
+    '''
+    return cell.metadata.lecture_tools[attr]
+
+
+def check_nb(file):
+    '''
+    '''
+    # read file
+    # cell_list =
+    # check that each cell hass lecture_tools, block name and type
+
+    required_meta = ['block','type']
+    meta_missing = []
+    fld_missing = {f:[] for f in required_meta}
+
+    for cell in cell_list:
+        if 'lecture_tools' in cell.metadata.keys():
+            for attr in required_meta:
+                if not(attr in cell.metadata.lecture_tools.keys()):
+                    fld_missing[attr].append(cell)
+        else:
+            meta_missing.append(cell)
+
+    return True
+
+class BlockTutorial(Tutorial):
+
+    def __init__():
+        super().__init__()
+        blocks = {}
+        for c in self.tutorial]:
+            cur_blk = get_attr(c,'block')
+            if cur_blk in blocks.keys():
+                blocks[cur_blk][get_attr(c,'type')] =c
+            else:
+                blocks[cur_blk] = {get_attr(c,'type'):c}
+        self.blocks = blocks
+
+    def next(self):
         '''
-        parse the loaded notebook into instructions, hints, templates
+        show the next cell
         '''
+        self.show(self.tutorial[self.current])
+        self.current += 1
+
+    def start(self):
+        '''
+        start the tutorial
+        '''
+    # def parse(self):
+    #     '''
+    #     parse the loaded notebook into instructions, hints, templates
+    #     '''
