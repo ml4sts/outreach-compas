@@ -45,7 +45,3 @@ Below are some useful references just for this activity
   - get basic statistics that summarize a dataset
   - `df.describe()` or `df['colname'].describe()`
 ```
-
-## Python
-
-The 

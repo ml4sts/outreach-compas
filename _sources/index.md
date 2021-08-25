@@ -14,6 +14,13 @@ This is the home page for our lab's outreach activity.
 
 1. create a tutorial object
 
+  <!-- ```
+  import compaslab
+  tut= compaslab.LiveTutorial('stem_academy_hints.ipynb')
+  ```
+
+1. if you fall behind: -->
+
   ```
   import compaslab
   tut= compaslab.Tutorial('stem_academy.ipynb')
