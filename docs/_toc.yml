@@ -13,3 +13,4 @@ parts:
   - caption: About
     chapters:
     - file: tutorial
+    - file: intructor_notes
