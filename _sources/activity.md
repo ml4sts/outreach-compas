@@ -1,4 +1,4 @@
-# Replicating Propublica's COMPAS Audit
+# About the Data and Extensions
 
 
 Data Description

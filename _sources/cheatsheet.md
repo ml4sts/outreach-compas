@@ -2,8 +2,11 @@
 
 ## Jupyter Notebooks
 
+[Jupyter Notebooks](https://jupyter.org/index.html) are a computational tool for
+writing code and combining it with text.
 
 ```{list-table}
+:header-rows: 1
 
 * - Action
   - How to
@@ -17,8 +20,12 @@
 
 ## Tutorial navigation
 
+This activity uses a custom library called compaslab that helps advance through
+the activity.
+
 
 ```{list-table}
+:header-rows: 1
 
 * - Action
   - How to
@@ -37,6 +44,7 @@
 
 
 ```{list-table}
+:header-rows: 1
 
 * - term
   - definition
@@ -67,6 +75,7 @@
 Below are some useful references just for this activity
 
 ```{list-table}
+:header-rows: 1
 
 * - function
   - description
@@ -79,6 +88,6 @@ Below are some useful references just for this activity
   - `df.describe()` or `df['colname'].describe()`
 ```
 
-## Python
+<!-- ## Python
 
-The
+The -->

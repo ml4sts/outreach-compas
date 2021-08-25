@@ -51,7 +51,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Additional Reading" href="resources.html" />
+    <link rel="prev" title="About the Data and Extensions" href="activity.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -95,11 +95,6 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="activity.html">
-   Replicating Propublica’s COMPAS Audit
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="cheatsheet.html">
    Cheatsheet
   </a>
@@ -107,6 +102,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="resources.html">
    Additional Reading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="activity.html">
+   About the Data and Extensions
   </a>
  </li>
 </ul>
@@ -214,6 +214,16 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-tutorial-navigation">
+   Basic Tutorial navigation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fill-in-the-black-tutorial-tmp">
+   Fill in the Black tutorial_tmp
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#adding-a-new-tutorial">
    Adding a new tutorial
   </a>
@@ -231,24 +241,81 @@
                 
   <div class="section" id="tutorial-logistics">
 <h1>Tutorial Logistics<a class="headerlink" href="#tutorial-logistics" title="Permalink to this headline">¶</a></h1>
+<p>This activity uses a custom library called compaslab that helps advance through
+the activity.</p>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<p>import the package</p>
+<p>After installing, import the package</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">compaslab</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="basic-tutorial-navigation">
+<h2>Basic Tutorial navigation<a class="headerlink" href="#basic-tutorial-navigation" title="Permalink to this headline">¶</a></h2>
 <p>load the activity</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tut</span> <span class="o">=</span> <span class="n">compaslab</span><span class="o">.</span><span class="n">Tutorial</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>initialize</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tut</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<p>Then proceeed using these controls</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Action</p></th>
+<th class="head"><p>How to</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>execute a cell (block in the notebook)</p></td>
+<td><p>shift + enter (windows/linux) or shift + return (mac)</p></td>
+</tr>
+<tr class="row-odd"><td><p>go to the next step</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tut.next()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>get back to the right place if out of sync and lost track, by resetting</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tut.start()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>clean up the temporary files</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tut.close()</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>If you get an error, check that all of the cells with code have a number to the left.</p>
+</div>
+<div class="section" id="fill-in-the-black-tutorial-tmp">
+<h2>Fill in the Black tutorial_tmp<a class="headerlink" href="#fill-in-the-black-tutorial-tmp" title="Permalink to this headline">¶</a></h2>
+<p>A more advanced version with fill in the blanks can be started with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tut</span> <span class="o">=</span> <span class="n">compaslab</span><span class="o">.</span><span class="n">LiveTutorial</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>proceed</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tut</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
-</pre></div>
-</div>
+<p>That provides the additional controls:</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>go to the next section</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">tut.jump()</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>get a hint</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tut.hint()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>get the intro for a section</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tut.intro()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>get the template</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tut.template()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>get the solution</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tut.solution()</span></code></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="adding-a-new-tutorial">
 <h2>Adding a new tutorial<a class="headerlink" href="#adding-a-new-tutorial" title="Permalink to this headline">¶</a></h2>
@@ -286,11 +353,11 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="resources.html" title="previous page">
+        <a class="left-prev" href="activity.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Additional Reading</p>
+                <p class="prevnext-title">About the Data and Extensions</p>
             </div>
         </a>
     </div>
