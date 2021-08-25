@@ -6,9 +6,9 @@ root: index
 parts:
   - caption: Activity
     chapters:
-    - file: activity
     - file: cheatsheet
     - file: resources
+    - file: activity
     - file: ../compaslab/activities/stem_academy.md
   - caption: About
     chapters:

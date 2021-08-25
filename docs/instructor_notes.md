@@ -14,6 +14,7 @@ jupyter:
 ---
 
 # Instructor Notes
+
 ```{code-cell} ipython3
 pip install ../.
 ```
@@ -26,6 +27,13 @@ import compaslab
 ## TD STEM Academy
 ```{code-cell} ipython3
 tut= compaslab.LiveTutorial('stem_academy.ipynb')
+
+for i,curb in enumerate(tut.block_list):
+    print(' '.join([str(i),curb,'\n -']),'\n - '.join(list(tut.blocks[curb].keys())))
+```
+
+```{code-cell} ipython3
+tut= compaslab.LiveTutorial('stem_academy_hints.ipynb')
 
 for i,curb in enumerate(tut.block_list):
     print(' '.join([str(i),curb,'\n -']),'\n - '.join(list(tut.blocks[curb].keys())))
