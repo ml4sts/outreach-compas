@@ -14,7 +14,7 @@ tutorial_readers = {'ipynb': lambda fn : nbformat.read(fn, as_version =4).cells,
                     'md': lambda fn: jupytext.read(fn)['cells']}
 
 
-builtin_activities = ['stem_academy']
+builtin_activities = ['stem_academy','stem_academy_hints']
 # builtin_path = pkgrs.resource_listdir(__name__,'')
 
 TMP_DIR = 'tutorial_tmp'
@@ -41,7 +41,7 @@ class Tutorial:
 
         self.tutorial = tutorial_readers[fmt](filename)
 
-        self.current = 0
+        self.next_cell= 0
 
         ## prep for tmp files
         self.tmp_dir = TMP_DIR + datetime.now().strftime('%Y%m%d%H%M%S%f')
@@ -53,17 +53,17 @@ class Tutorial:
         '''
         show the next cell
         '''
-        self.show(self.tutorial[self.current])
-        self.current += 1
+        self.display(self.tutorial[self.next_cell])
+        self.next_cell+= 1
 
     def start(self):
         '''
         start the tutorial
         '''
-        self.show(self.tutorial[0])
-        self.current = 1
+        self.display(self.tutorial[0])
+        self.next_cell= 1
 
-    def show(self,cell):
+    def display(self,cell):
         '''
         display a cell
         '''
@@ -71,7 +71,7 @@ class Tutorial:
         if cell.cell_type == 'markdown':
             display(Markdown(cell.source))
         if cell.cell_type =='code':
-            cell_fname = os.path.join(self.tmp_dir,'cell'+str(self.current) +'.py')
+            cell_fname = os.path.join(self.tmp_dir,'cell'+str(self.next_cell) +'.py')
             with open (cell_fname,'w') as f:
                 f.write(cell.source)
             get_ipython().run_line_magic('load',cell_fname)
@@ -116,30 +116,143 @@ def check_nb(file):
 
     return True
 
-class BlockTutorial(Tutorial):
+class LiveTutorial(Tutorial):
 
-    def __init__():
-        super().__init__()
+    def __init__(self,filename):
+        super().__init__(filename)
         blocks = {}
-        for c in self.tutorial]:
+        for i,c in enumerate(self.tutorial):
             cur_blk = get_attr(c,'block')
+            cur_type = get_attr(c,'type')
+            # create or append to the dictionary for this block
             if cur_blk in blocks.keys():
-                blocks[cur_blk][get_attr(c,'type')] =c
-            else:
-                blocks[cur_blk] = {get_attr(c,'type'):c}
-        self.blocks = blocks
 
-    def next(self):
-        '''
-        show the next cell
-        '''
-        self.show(self.tutorial[self.current])
-        self.current += 1
+                blocks[cur_blk][cur_type] =c
+
+            else:
+                blocks[cur_blk] = {cur_type:c}
+
+            # always enumerate the cell for advancing linearly
+            blocks[cur_blk][cur_type]['num'] =i
+
+        self.blocks = blocks
+        self.block_list = list(blocks.keys())
+        self.current_block = self.block_list[0]
 
     def start(self):
         '''
         start the tutorial
         '''
+        self.current_block = self.block_list[0]
+        self.display(self.tutorial[0])
+        self.next_cell= 1
+
+    def next(self):
+        '''
+        show the next cell and advance in order
+        '''
+        self.display(self.tutorial[self.next_cell])
+        self.next_cell += 1
+
+    def jump(self):
+        '''
+        show first cell in the next block
+        '''
+        cur_block_num = self.block_list.index(self.current_block)
+        next_blockname = self.block_list[cur_block_num+2]
+        self.show(next_blockname)
+
+
+    def show(self,blockname):
+        '''
+        show first cell in a block
+        '''
+        if blockname in self.block_list:
+
+            first_type = list(self.blocks[blockname].keys())[0]
+            cell = self.blocks[blockname][first_type]
+            self.display(cell)
+            self.current_block = blockname
+            self.next_cell = cell['num'] +1
+        else:
+            self.missingblock(blockname)
+
+    def intro(self,blockname= None):
+        '''
+        show intro text of the given block and advance
+        '''
+        if not(blockname):
+            blockname = self.current_block
+        self.showpart(blockname,'narrative')
+
+    def template(self, blockname = None):
+        '''
+
+        '''
+        if not(blockname):
+            blockname = self.current_block
+        self.showpart(blockname,'template')
+
+    def hint(self, blockname = None):
+        '''
+        '''
+        if not(blockname):
+            blockname = self.current_block
+        self.showpart(blockname,'hint')
+
+    def solution(self, blockname = None):
+        '''
+        show the solution of a specific or the current block
+        '''
+        if not(blockname): # ev
+            blockname = self.current_block
+        self.showpart(blockname,'solution')
+
+    def explain(self, blockname = None):
+        '''
+        show the solution of a specific or the current block
+        '''
+        if not(blockname): # ev
+            blockname = self.current_block
+        self.showpart(blockname,'interpretation')
+
+
+    def showpart(self, blockname,partname):
+        '''
+        show partname cell of  blockname section
+        '''
+        # check if the block exists
+        if blockname in self.blocks.keys():
+            # check if the part exists
+            if partname in self.blocks[blockname].keys():
+                cell = self.blocks[blockname][partname]
+                self.display(cell)
+                self.current_block = blockname
+                self.next_cell = cell['num'] +1
+            else:
+                self.missingpart(blockname,partname)
+        else:
+            self.missingblock(blockname)
+
+    def missingpart(self,blockname,partname):
+        '''
+        note tha there's no such part
+        '''
+
+        msg = ("The " + blockname + " section does'nt have a " +
+                    partname + "try `.next()`" )
+        display(Markdown(msg))
+
+    def missingblock(self,blockname):
+        '''
+        note tha there's no such part
+        '''
+        msg = "There is no " + blockname
+                    # " section, the options are :" + str(self.block_list))
+        display(Markdown(msg))
+
+
+
     # def parse(self):
     #     '''
     #     parse the loaded notebook into instructions, hints, templates

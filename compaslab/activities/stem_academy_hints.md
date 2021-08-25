@@ -30,7 +30,7 @@ First, we need to import some common libraries,
 ---
 lecture_tools:
   block: setup
-  type: solution
+  type: template
 ---
 import numpy as np
 import pandas as pd
@@ -48,6 +48,28 @@ warnings.filterwarnings('ignore')
 ## Propublica COMPAS Data
 
 The dataset consists of COMPAS scores assigned to defendants over two years 2013-2014 in Broward County, Florida, it was released by Propublica in a [GitHub Repository](https://github.com/propublica/compas-analysis/). These scores are determined by a proprietary algorithm designed to evaluate a persons recidivism risk - the likelihood that they will reoffend. Risk scoring algorithms are widely used by judges to inform their sentencing and bail decisions in the criminal justice system in the United States. The original ProPublica analysis identified a number of fairness concerns around the use of COMPAS scores, including that ''black defendants were nearly twice as likely to be misclassified as higher risk compared to their white counterparts.'' Please see the full article for further details. Use pandas to read in the data and set the `id` column to the index.
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: data
+  type: template
+---
+# replace the __ with correct values
+df_pp = pd.__('__',
+                 header=0).(__)
+```
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: data
+  type: hint
+---
+# find the csv file in the repo and use the raw button on github to get the compatible url
+df_pp = pd.read_csv("",
+                 header=0).set_index('id')
+```
 
 ```{code-cell} ipython3
 ---
@@ -80,6 +102,15 @@ print(df_pp.head())
 For this analysis, we will restrict ourselves to only a few features, and clean the dataset according to the methods using in the original ProPublica analysis.
 
 For this tutorial, we've prepared a cleaned copy of the data, that we can import directly.
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: cleandata
+  type: template
+---
+df = pd.__('https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_c.csv')
+```
 
 ```{code-cell} ipython3
 ---
@@ -121,6 +152,15 @@ In particular, as in the ProPublica analysis, we are interested in the implicati
 ---
 lecture_tools:
   block: explore
+  type: template
+---
+df['__'].__
+```
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: explore
   type: solution
 ---
 df['race'].value_counts()
@@ -129,6 +169,15 @@ df['race'].value_counts()
 +++ {"lecture_tools": {"block": "filter", "type": "instructions"}}
 
 2. filter to keep data from the two larges groups
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: filter
+  type: template
+---
+df = df.loc[df['race'].isin(['',''])]
+```
 
 ```{code-cell} ipython3
 ---
@@ -149,6 +198,18 @@ Let's look at the COMPAS score distribution between African-Americans and Caucas
 ---
 lecture_tools:
   block: distribution
+  type: template
+---
+race_score_table = df.groupby([___]).size().reset_index().pivot(index='__',columns='___',values=0)
+
+# print percentage of defendants in each score category
+(100*/.sum()).transpose()
+```
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: distribution
   type: solution
 ---
 race_score_table = df.groupby(['race','decile_score']).size().reset_index().pivot(
@@ -161,6 +222,15 @@ race_score_table = df.groupby(['race','decile_score']).size().reset_index().pivo
 +++ {"lecture_tools": {"block": "distributionviz", "type": "narrative"}}
 
 Next, make a bar plot  with that table (quickest way is to use pandas plot with `figsize=[12,7]` to make it bigger, plot type is indicated by the `kind` parameter)
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: distributionviz
+  type: template
+---
+race_score_table.__(kind='__')
+```
 
 ```{code-cell} ipython3
 ---
@@ -469,6 +539,28 @@ Let's investigate how the rule learned by CORELS compares.
 1. Write a function that takes one row of the data frame and computes the corels function
 1. Use `df.apply` to apply your function and add a column to the data frame with the corels score
 1. Evaluate the CORELS prediction with respect to accuracy, and fairness following the above
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: calibration
+  type: template
+---
+def corels_rule(row):
+    if ___:
+        return __
+    elif ___:
+        return __
+    else:
+        return False
+
+df['corels'] = df.apply(____,axis=1)
+
+#  Let's measure the disparate impact according to the EEOC rule
+means_corel = df.groupby(['corels','race']).size().unstack().reset_index()
+means_corel = means_corel/means_corel.sum()
+means_corel
+```
 
 ```{code-cell} ipython3
 ---
