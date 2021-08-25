@@ -20,7 +20,7 @@ kernelspec:
 ## Why COMPAS?
 
 
-Propublica started the COMPAS Debate with the article [Machine Bias](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencin).  With their article, they also released details of their methodology and their [data and code](https://github.com/propublica/compas-analysis).  This presents a real data set that can be used for research on how data is used in a criminal justice setting without researchers having to perform their own requests for information, so it has been used and reused a lot of times.
+Propublica started the COMPAS Debate with the article [Machine Bias](#References).  With their article, they also released details of their methodology and their [data and code](https://github.com/propublica/compas-analysis).  This presents a real data set that can be used for research on how data is used in a criminal justice setting without researchers having to perform their own requests for information, so it has been used and reused a lot of times.
 
 +++ {"lecture_tools": {"block": "setup", "type": "instructions"}}
 
@@ -30,7 +30,7 @@ First, we need to import some common libraries,
 ---
 lecture_tools:
   block: setup
-  type: solution
+  type: template
 ---
 import numpy as np
 import pandas as pd
@@ -53,6 +53,28 @@ The dataset consists of COMPAS scores assigned to defendants over two years 2013
 ---
 lecture_tools:
   block: data
+  type: template
+---
+# replace the __ with correct values
+df_pp = pd.__('__',
+                 header=0).(__)
+```
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: data
+  type: hint
+---
+# find the csv file in the repo and use the raw button on github to get the compatible url
+df_pp = pd.read_csv("",
+                 header=0).set_index('id')
+```
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: data
   type: solution
 ---
 df_pp = pd.read_csv("https://github.com/propublica/compas-analysis/raw/master/compas-scores-two-years.csv",
@@ -60,7 +82,6 @@ df_pp = pd.read_csv("https://github.com/propublica/compas-analysis/raw/master/co
 ```
 
 +++ {"lecture_tools": {"block": "examine", "type": "instructions"}}
-
 
 Look at the list of columns and the first few rows to get an idea of what the dataset looks like.
 
@@ -86,14 +107,21 @@ For this tutorial, we've prepared a cleaned copy of the data, that we can import
 ---
 lecture_tools:
   block: cleandata
+  type: template
+---
+df = pd.__('https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_c.csv')
+```
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: cleandata
   type: solution
 ---
 df = pd.read_csv('https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_c.csv')
 ```
 
-
 +++ {"lecture_tools": {"block": "explore", "type": "narrative"}}
-
 
 ## Data Exploration
 
@@ -124,6 +152,15 @@ In particular, as in the ProPublica analysis, we are interested in the implicati
 ---
 lecture_tools:
   block: explore
+  type: template
+---
+df['__'].__
+```
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: explore
   type: solution
 ---
 df['race'].value_counts()
@@ -132,6 +169,15 @@ df['race'].value_counts()
 +++ {"lecture_tools": {"block": "filter", "type": "instructions"}}
 
 2. filter to keep data from the two larges groups
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: filter
+  type: template
+---
+df = df.loc[df['race'].isin(['',''])]
+```
 
 ```{code-cell} ipython3
 ---
@@ -152,6 +198,18 @@ Let's look at the COMPAS score distribution between African-Americans and Caucas
 ---
 lecture_tools:
   block: distribution
+  type: template
+---
+race_score_table = df.groupby([___]).size().reset_index().pivot(index='__',columns='___',values=0)
+
+# print percentage of defendants in each score category
+(100*/.sum()).transpose()
+```
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: distribution
   type: solution
 ---
 race_score_table = df.groupby(['race','decile_score']).size().reset_index().pivot(
@@ -164,6 +222,15 @@ race_score_table = df.groupby(['race','decile_score']).size().reset_index().pivo
 +++ {"lecture_tools": {"block": "distributionviz", "type": "narrative"}}
 
 Next, make a bar plot  with that table (quickest way is to use pandas plot with `figsize=[12,7]` to make it bigger, plot type is indicated by the `kind` parameter)
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: distributionviz
+  type: template
+---
+race_score_table.__(kind='__')
+```
 
 ```{code-cell} ipython3
 ---
@@ -472,6 +539,28 @@ Let's investigate how the rule learned by CORELS compares.
 1. Write a function that takes one row of the data frame and computes the corels function
 1. Use `df.apply` to apply your function and add a column to the data frame with the corels score
 1. Evaluate the CORELS prediction with respect to accuracy, and fairness following the above
+
+```{code-cell} ipython3
+---
+lecture_tools:
+  block: calibration
+  type: template
+---
+def corels_rule(row):
+    if ___:
+        return __
+    elif ___:
+        return __
+    else:
+        return False
+
+df['corels'] = df.apply(____,axis=1)
+
+#  Let's measure the disparate impact according to the EEOC rule
+means_corel = df.groupby(['corels','race']).size().unstack().reset_index()
+means_corel = means_corel/means_corel.sum()
+means_corel
+```
 
 ```{code-cell} ipython3
 ---
