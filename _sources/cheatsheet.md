@@ -1,5 +1,38 @@
 # Cheatsheet
 
+## Jupyter Notebooks
+
+
+```{list-table}
+
+* - Action
+  - How to
+* - execute a cell (block in the notebook)
+  - shift + enter (windows/linux) or shift + return (mac)
+* - get help for a Function
+  - shift + tab inside `()` (press tab more times for more details)
+
+```
+
+
+## Tutorial navigation
+
+
+```{list-table}
+
+* - Action
+  - How to
+* - execute a cell (block in the notebook)
+  - shift + enter (windows/linux) or shift + return (mac)
+* - go to the next step
+  - `tut.next()`
+* - go to the next section
+  - `tut.jump()`
+* - get a hint
+  - `tut.hint('sectionname')`
+
+```
+
 ## Vocabulary
 
 
@@ -38,10 +71,14 @@ Below are some useful references just for this activity
 * - function
   - description
   - example
-* - `load_csv`
+* - `read_csv`
   - load data from a comma separated values (csv) files
-  - `pd.load_csv('data.csv')`
+  - `pd.read_csv('data.csv')`
 * - `describe`
   - get basic statistics that summarize a dataset
   - `df.describe()` or `df['colname'].describe()`
 ```
+
+## Python
+
+The

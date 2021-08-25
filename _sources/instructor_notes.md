@@ -13,24 +13,26 @@ jupyter:
     name: python3
 ---
 
+# Instructor Notes
 ```{code-cell} ipython3
 pip install ../.
 ```
 
 ```{code-cell} ipython3
 import compaslab
-tut= compaslab.LiveTutorial('stem_academy.ipynb')
 ```
 
+
+## TD STEM Academy
 ```{code-cell} ipython3
+tut= compaslab.LiveTutorial('stem_academy.ipynb')
+
 for i,curb in enumerate(tut.block_list):
     print(' '.join([str(i),curb,'\n -']),'\n - '.join(list(tut.blocks[curb].keys())))
 ```
 
+
+Wrap up
 ```{code-cell} ipython3
 tut.close()
-```
-
-```{code-cell} ipython3
-
 ```
