@@ -2,20 +2,24 @@
 
 ## Usage
 
+import the package
 ```
 import compaslab
 ```
 
+load the activity
 ```
 tut = compaslab.Tutorial('filename')
 ```
 
+initialize
 ```
 tut.start()
 ```
 
+proceed
 ```
-tut.next
+tut.next()
 ```
 
 

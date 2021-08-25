@@ -24,6 +24,6 @@ There are, however, risks to drawing conclusions from this dataset.
 
 ## Data Analysis, Python,
 
-For more on general data analysis with python, see Data Carpentry's [Social Sciences] or [Ecology] lesson.
+For more on general data analysis with python, see Data Carpentry's [Social Sciences](https://datacarpentry.org/python-socialsci/) or [Ecology](https://datacarpentry.org/python-ecology-lesson/) lesson.
 
-The [code]() for this activity is hosted on [GitHub]() if you make an account, you can contribute back your ideas or comment on others' ideas or suggestions.
+The [code](https://github.com/ml4sts/outreach-compas) for this activity is hosted on [GitHub](https://github.com/) if you make an account, you can [contribute](https://github.com/ml4sts/outreach-compas/issues) back your ideas or comment on others' ideas or suggestions.

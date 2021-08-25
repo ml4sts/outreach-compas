@@ -9,7 +9,7 @@ parts:
     - file: activity
     - file: cheatsheet
     - file: resources
-    - file: ../compaslab/activities/stem_academy
+    - file: ../compaslab/activities/stem_academy.md
   - caption: About
     chapters:
     - file: tutorial

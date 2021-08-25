@@ -20,7 +20,7 @@ kernelspec:
 ## Why COMPAS?
 
 
-Propublica started the COMPAS Debate with the article [Machine Bias](#References).  With their article, they also released details of their methodology and their [data and code](https://github.com/propublica/compas-analysis).  This presents a real data set that can be used for research on how data is used in a criminal justice setting without researchers having to perform their own requests for information, so it has been used and reused a lot of times.
+Propublica started the COMPAS Debate with the article [Machine Bias](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencin).  With their article, they also released details of their methodology and their [data and code](https://github.com/propublica/compas-analysis).  This presents a real data set that can be used for research on how data is used in a criminal justice setting without researchers having to perform their own requests for information, so it has been used and reused a lot of times.
 
 +++ {"lecture_tools": {"block": "setup", "type": "instructions"}}
 
@@ -61,6 +61,7 @@ df_pp = pd.read_csv("https://github.com/propublica/compas-analysis/raw/master/co
 
 +++ {"lecture_tools": {"block": "examine", "type": "instructions"}}
 
+
 Look at the list of columns and the first few rows to get an idea of what the dataset looks like.
 
 ```{code-cell} ipython3
@@ -90,7 +91,9 @@ lecture_tools:
 df = pd.read_csv('https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_c.csv')
 ```
 
+
 +++ {"lecture_tools": {"block": "explore", "type": "narrative"}}
+
 
 ## Data Exploration
 
