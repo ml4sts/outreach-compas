@@ -14,7 +14,7 @@ kernelspec:
 
 +++ {"lecture_tools": {"block": "intro", "type": "narrative"}}
 
-# Replicating Propbulica's COMPAS Audit
+# Replicating Propbulica's COMPAS Audit Challenge
 
 
 ## Why COMPAS?
