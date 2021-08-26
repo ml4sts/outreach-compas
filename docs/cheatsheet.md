@@ -1,5 +1,7 @@
 # Cheatsheet
 
+This page has helpful reminders
+
 ## Jupyter Notebooks
 
 [Jupyter Notebooks](https://jupyter.org/index.html) are a computational tool for
@@ -17,28 +19,6 @@ writing code and combining it with text.
 
 ```
 
-
-## Tutorial navigation
-
-This activity uses a custom library called compaslab that helps advance through
-the activity.
-
-
-```{list-table}
-:header-rows: 1
-
-* - Action
-  - How to
-* - execute a cell (block in the notebook)
-  - shift + enter (windows/linux) or shift + return (mac)
-* - go to the next step
-  - `tut.next()`
-* - go to the next section
-  - `tut.jump()`
-* - get a hint
-  - `tut.hint('sectionname')`
-
-```
 
 ## Vocabulary
 

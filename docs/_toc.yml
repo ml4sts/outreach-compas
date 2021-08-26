@@ -9,8 +9,11 @@ parts:
     - file: cheatsheet
     - file: resources
     - file: activity
-    - file: ../compaslab/activities/stem_academy.md
   - caption: About
     chapters:
     - file: tutorial
-    - file: intructor_notes
+    - file: instructor_notes
+  - caption: Recaps
+    chapters:
+    - file: recaps/stem_academy
+    - file: recaps/stem_academy_hints
