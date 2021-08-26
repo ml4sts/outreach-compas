@@ -237,33 +237,39 @@
 <h1>ML4STS Lab COMPAS Activity<a class="headerlink" href="#ml4sts-lab-compas-activity" title="Permalink to this headline">¶</a></h1>
 <p>This is the home page for our lab’s outreach activity.</p>
 <!-- Choose the page below for your specific event's detailed instructions -->
-<ol class="simple">
-<li><p>Go to the <a class="reference external" href="https://jupyter.uri.edu/">URI Jupyter Notebook Server</a></p></li>
-<li><p>Open a new notebook,</p></li>
-<li><p>Download and install helper code:</p></li>
-</ol>
+<p><strong>Keep this page open for the whole activity</strong></p>
+<ol>
+<li><p>In your URI e-mail, find an e-mail from <code class="docutils literal notranslate"><span class="pre">root&#64;quahog.uri.edu</span></code></p></li>
+<li><p>In a new tab, open to the <a class="reference external" href="https://jupyter.uri.edu/">URI Jupyter Notebook Server</a></p></li>
+<li><p>Login using the username and password in the e-mail</p></li>
+<li><p>Open a new notebook, (new &gt; Python3)</p></li>
+<li><p>Download and install helper code:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ml4sts</span><span class="o">/</span><span class="n">outreach</span><span class="o">-</span><span class="n">compas</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>create a tutorial object</p></li>
+</li>
+<li><p>Import the library and initiaize the tutorial</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">compaslab</span>
+<span class="n">tut</span><span class="o">=</span> <span class="n">compaslab</span><span class="o">.</span><span class="n">Tutorial</span><span class="p">(</span><span class="s1">&#39;stem_academy.ipynb&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Start with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tut</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p>Follow along with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tut</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
 </ol>
   <!-- ```
   import compaslab
   tut= compaslab.LiveTutorial('stem_academy_hints.ipynb')
   ```
-
 1. if you fall behind: -->
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">compaslab</span>
-<span class="n">tut</span><span class="o">=</span> <span class="n">compaslab</span><span class="o">.</span><span class="n">Tutorial</span><span class="p">(</span><span class="s1">&#39;stem_academy.ipynb&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<ol class="simple">
-<li><p>Follow along using</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tut</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
-</pre></div>
-</div>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">

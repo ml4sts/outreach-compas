@@ -352,20 +352,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1995</span><span class="o">/</span><span class="mf">4219225998.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">itertools</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_curve</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">warnings</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;sklearn&#39;
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="propublica-compas-data">
@@ -384,6 +370,44 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_pp</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_pp</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;name&#39;, &#39;first&#39;, &#39;last&#39;, &#39;compas_screening_date&#39;, &#39;sex&#39;, &#39;dob&#39;, &#39;age&#39;, &#39;age_cat&#39;, &#39;race&#39;, &#39;juv_fel_count&#39;, &#39;decile_score&#39;, &#39;juv_misd_count&#39;, &#39;juv_other_count&#39;, &#39;priors_count&#39;, &#39;days_b_screening_arrest&#39;, &#39;c_jail_in&#39;, &#39;c_jail_out&#39;, &#39;c_case_number&#39;, &#39;c_offense_date&#39;, &#39;c_arrest_date&#39;, &#39;c_days_from_compas&#39;, &#39;c_charge_degree&#39;, &#39;c_charge_desc&#39;, &#39;is_recid&#39;, &#39;r_case_number&#39;, &#39;r_charge_degree&#39;, &#39;r_days_from_arrest&#39;, &#39;r_offense_date&#39;, &#39;r_charge_desc&#39;, &#39;r_jail_in&#39;, &#39;r_jail_out&#39;, &#39;violent_recid&#39;, &#39;is_violent_recid&#39;, &#39;vr_case_number&#39;, &#39;vr_charge_degree&#39;, &#39;vr_offense_date&#39;, &#39;vr_charge_desc&#39;, &#39;type_of_assessment&#39;, &#39;decile_score.1&#39;, &#39;score_text&#39;, &#39;screening_date&#39;, &#39;v_type_of_assessment&#39;, &#39;v_decile_score&#39;, &#39;v_score_text&#39;, &#39;v_screening_date&#39;, &#39;in_custody&#39;, &#39;out_custody&#39;, &#39;priors_count.1&#39;, &#39;start&#39;, &#39;end&#39;, &#39;event&#39;, &#39;two_year_recid&#39;]
+                  name   first         last compas_screening_date   sex  \
+id                                                                        
+1     miguel hernandez  miguel    hernandez            2013-08-14  Male   
+3          kevon dixon   kevon        dixon            2013-01-27  Male   
+4             ed philo      ed        philo            2013-04-14  Male   
+5          marcu brown   marcu        brown            2013-01-13  Male   
+6   bouthy pierrelouis  bouthy  pierrelouis            2013-03-26  Male   
+
+           dob  age          age_cat              race  juv_fel_count  ...  \
+id                                                                     ...   
+1   1947-04-18   69  Greater than 45             Other              0  ...   
+3   1982-01-22   34          25 - 45  African-American              0  ...   
+4   1991-05-14   24     Less than 25  African-American              0  ...   
+5   1993-01-21   23     Less than 25  African-American              0  ...   
+6   1973-01-22   43          25 - 45             Other              0  ...   
+
+    v_decile_score  v_score_text  v_screening_date  in_custody  out_custody  \
+id                                                                            
+1                1           Low        2013-08-14  2014-07-07   2014-07-14   
+3                1           Low        2013-01-27  2013-01-26   2013-02-05   
+4                3           Low        2013-04-14  2013-06-16   2013-06-16   
+5                6        Medium        2013-01-13         NaN          NaN   
+6                1           Low        2013-03-26         NaN          NaN   
+
+   priors_count.1 start   end event two_year_recid  
+id                                                  
+1               0     0   327     0              0  
+3               0     9   159     1              1  
+4               4     0    63     0              1  
+5               1     0  1174     0              0  
+6               2     0  1102     0              0  
+
+[5 rows x 52 columns]
 </pre></div>
 </div>
 </div>
@@ -430,6 +454,13 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>African-American    3175
+Caucasian           2103
+Name: race, dtype: int64
+</pre></div>
+</div>
+</div>
 </div>
 <ol class="simple">
 <li><p>filter to keep data from the two larges groups</p></li>
@@ -454,6 +485,80 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>decile_score</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+    </tr>
+    <tr>
+      <th>race</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>African-American</th>
+      <td>11.496063</td>
+      <td>10.897638</td>
+      <td>9.385827</td>
+      <td>10.614173</td>
+      <td>10.173228</td>
+      <td>10.015748</td>
+      <td>10.803150</td>
+      <td>9.480315</td>
+      <td>9.984252</td>
+      <td>7.149606</td>
+    </tr>
+    <tr>
+      <th>Caucasian</th>
+      <td>28.768426</td>
+      <td>15.263909</td>
+      <td>11.317166</td>
+      <td>11.554922</td>
+      <td>9.510223</td>
+      <td>7.608179</td>
+      <td>5.373276</td>
+      <td>4.564907</td>
+      <td>3.661436</td>
+      <td>2.377556</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Next, make a bar plot  with that table (quickest way is to use pandas plot with <code class="docutils literal notranslate"><span class="pre">figsize=[12,7]</span></code> to make it bigger, plot type is indicated by the <code class="docutils literal notranslate"><span class="pre">kind</span></code> parameter)</p>
 <div class="cell docutils container">
@@ -461,6 +566,12 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">race_score_table</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;decile_score&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/stem_academy_17_1.png" src="../_images/stem_academy_17_1.png" />
 </div>
 </div>
 <p>As you can observe, there is a large discrepancy. Does this change when we condition on other variables?</p>
@@ -473,6 +584,12 @@
 <span class="n">priors</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;priors_count&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/stem_academy_19_1.png" src="../_images/stem_academy_19_1.png" />
 </div>
 </div>
 <ol class="simple">
@@ -488,6 +605,12 @@
 <span class="n">score_2priors</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;decile_score&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/stem_academy_21_1.png" src="../_images/stem_academy_21_1.png" />
 </div>
 </div>
 </div>
@@ -510,6 +633,43 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>two_year_recid</th>
+      <th>score_text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>two_year_recid</th>
+      <td>1.000000</td>
+      <td>0.314698</td>
+    </tr>
+    <tr>
+      <th>score_text</th>
+      <td>0.314698</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Is the ground truth correlated to the <code class="docutils literal notranslate"><span class="pre">decile_score</span></code>rating?</p>
 <div class="cell docutils container">
@@ -518,6 +678,43 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>two_year_recid</th>
+      <th>decile_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>two_year_recid</th>
+      <td>1.000000</td>
+      <td>0.368193</td>
+    </tr>
+    <tr>
+      <th>decile_score</th>
+      <td>0.368193</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>The correlation is not that high. How can we evaluate whether the predictions made by the COMPAS scores are fair, especially considering that they do not predict recidivism rates well?</p>
 </div>
@@ -554,6 +751,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5745131730114521
+</pre></div>
+</div>
+</div>
 </div>
 <p>This ratio is below .8, so there is disparate impact by this rule.  (Taking the priveleged group and the undesirable outcome instead of the disadvantaged group and the favorable outcome).</p>
 <p>What if we apply the same rule to the <strong>true</strong> two year rearrest instead of the quantized COMPAS score?</p>
@@ -567,6 +769,11 @@
 <span class="n">AA_with_high_score</span> <span class="o">=</span> <span class="n">means_2yr</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;African-American&#39;</span><span class="p">]</span>
 <span class="n">C_with_high_score</span> <span class="o">=</span> <span class="n">means_2yr</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Caucasian&#39;</span><span class="p">]</span>
 <span class="n">C_with_high_score</span><span class="o">/</span><span class="n">AA_with_high_score</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7471480065031378
 </pre></div>
 </div>
 </div>
@@ -628,6 +835,12 @@ print('Calibration in percentage: %f%%' % calpercent)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Predictive parity for different thresholds\n(warning: no error bars)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/stem_academy_37_1.png" src="../_images/stem_academy_37_1.png" />
+</div>
 </div>
 </div>
 <div class="section" id="equalized-odds">
@@ -661,6 +874,12 @@ print('Calibration in percentage: %f%%' % calpercent)
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;African-American&#39;</span><span class="p">,</span><span class="s1">&#39;Caucasian&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd91a695a90&gt;
+</pre></div>
+</div>
+<img alt="../_images/stem_academy_39_1.png" src="../_images/stem_academy_39_1.png" />
 </div>
 </div>
 </div>
@@ -700,6 +919,46 @@ The <a class="reference external" href="https://corels.eecs.harvard.edu/corels/r
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>race</th>
+      <th>corels</th>
+      <th>African-American</th>
+      <th>Caucasian</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.617638</td>
+      <td>0.788873</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.0</td>
+      <td>0.382362</td>
+      <td>0.211127</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
 
