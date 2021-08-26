@@ -1,0 +1,778 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Replicating Propbulica’s COMPAS Audit in TD STEM Academy 2021 &#8212; ML4STS Lab COMPAS Tutorial</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Replicating Propbulica’s COMPAS Audit Challenge" href="stem_academy_hints.html" />
+    <link rel="prev" title="Instructor Notes" href="../instructor_notes.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">ML4STS Lab COMPAS Tutorial</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   ML4STS Lab COMPAS Activity
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Activity
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources.html">
+   Additional Reading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activity.html">
+   About the Data and Extensions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  About
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tutorial.html">
+   Tutorial Logistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../instructor_notes.html">
+   Instructor Notes
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Recaps
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Replicating Propbulica’s COMPAS Audit in TD STEM Academy 2021
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stem_academy_hints.html">
+   Replicating Propbulica’s COMPAS Audit Challenge
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/recaps/stem_academy.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/recaps/stem_academy.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ml4sts/outreach-compas"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ml4sts/outreach-compas/issues/new?title=Issue%20on%20page%20%2Frecaps/stem_academy.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ml4sts/outreach-compas/main?urlpath=tree/docs/recaps/stem_academy.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Replicating Propbulica’s COMPAS Audit in TD STEM Academy 2021
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-compas">
+     Why COMPAS?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#propublica-compas-data">
+     Propublica COMPAS Data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-cleaning">
+       Data Cleaning
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-exploration">
+     Data Exploration
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#compas-score-distribution">
+       COMPAS score distribution
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-happens-when-we-take-actual-2-year-recidivism-values-into-account-are-the-predictions-fair">
+     What happens when we take actual 2-year recidivism values into account? Are the predictions fair?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fairness-metrics">
+     Fairness Metrics
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#disparate-impact">
+       Disparate Impact
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#calibration">
+       Calibration
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#equalized-odds">
+       Equalized Odds
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extension-corels">
+   Extension: CORELS
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="replicating-propbulica-s-compas-audit-in-td-stem-academy-2021">
+<h1>Replicating Propbulica’s COMPAS Audit in TD STEM Academy 2021<a class="headerlink" href="#replicating-propbulica-s-compas-audit-in-td-stem-academy-2021" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="why-compas">
+<h2>Why COMPAS?<a class="headerlink" href="#why-compas" title="Permalink to this headline">¶</a></h2>
+<p>Propublica started the COMPAS Debate with the article <a class="reference external" href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">Machine Bias</a>.  With their article, they also released details of their methodology and their <a class="reference external" href="https://github.com/propublica/compas-analysis">data and code</a>.  This presents a real data set that can be used for research on how data is used in a criminal justice setting without researchers having to perform their own requests for information, so it has been used and reused a lot of times.</p>
+<p>First, we need to import some common libraries,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_curve</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1995</span><span class="o">/</span><span class="mf">4219225998.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">itertools</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_curve</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">warnings</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;sklearn&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="propublica-compas-data">
+<h2>Propublica COMPAS Data<a class="headerlink" href="#propublica-compas-data" title="Permalink to this headline">¶</a></h2>
+<p>The dataset consists of COMPAS scores assigned to defendants over two years 2013-2014 in Broward County, Florida, it was released by Propublica in a <a class="reference external" href="https://github.com/propublica/compas-analysis/">GitHub Repository</a>. These scores are determined by a proprietary algorithm designed to evaluate a persons recidivism risk - the likelihood that they will reoffend. Risk scoring algorithms are widely used by judges to inform their sentencing and bail decisions in the criminal justice system in the United States. The original ProPublica analysis identified a number of fairness concerns around the use of COMPAS scores, including that ‘’black defendants were nearly twice as likely to be misclassified as higher risk compared to their white counterparts.’’ Please see the full article for further details. Use pandas to read in the data and set the <code class="docutils literal notranslate"><span class="pre">id</span></code> column to the index.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://github.com/propublica/compas-analysis/raw/master/compas-scores-two-years.csv&quot;</span><span class="p">,</span>
+                 <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Look at the list of columns and the first few rows to get an idea of what the dataset looks like.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_pp</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_pp</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="data-cleaning">
+<h3>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h3>
+<p>For this analysis, we will restrict ourselves to only a few features, and clean the dataset according to the methods using in the original ProPublica analysis.</p>
+<p>For this tutorial, we’ve prepared a cleaned copy of the data, that we can import directly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_c.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="data-exploration">
+<h2>Data Exploration<a class="headerlink" href="#data-exploration" title="Permalink to this headline">¶</a></h2>
+<p>Next we provide a few ways to look at the relationships between the attributes in the dataset. Here is an explanation of these values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">age</span></code>: defendant’s age</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c_charge_degree</span></code>: degree charged (Misdemeanor of Felony)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">race</span></code>: defendant’s race</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">age_cat</span></code>: defendant’s age quantized in “less than 25”, “25-45”, or “over 45”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">score_text</span></code>: COMPAS score: ‘low’(1 to 5), ‘medium’ (5 to 7), and ‘high’ (8 to 10).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sex</span></code>: defendant’s gender</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">priors_count</span></code>: number of prior charges</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">days_b_screening_arrest</span></code>: number of days between charge date and arrest where defendant was screened for compas score</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">decile_score</span></code>: COMPAS score from 1 to 10 (low risk to high risk)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_recid</span></code>: if the defendant recidivized</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">two_year_recid</span></code>: if the defendant within two years</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c_jail_in</span></code>: date defendant was imprisoned</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c_jail_out</span></code>: date defendant was released from jail</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">length_of_stay</span></code>: length of jail stay</p></li>
+</ul>
+<p>In particular, as in the ProPublica analysis, we are interested in the implications for the treatment of different groups as defined by some <strong>protected attribute</strong>. In particular we will consider race as the protected attribute in our analysis. Next we look at the number of entries for each race.</p>
+<ol class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> to look at how much data is available for each race</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>filter to keep data from the two larges groups</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;African-American&#39;</span><span class="p">,</span><span class="s1">&#39;Caucasian&#39;</span><span class="p">])]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="compas-score-distribution">
+<h3>COMPAS score distribution<a class="headerlink" href="#compas-score-distribution" title="Permalink to this headline">¶</a></h3>
+<p>Let’s look at the COMPAS score distribution between African-Americans and Caucasians (matches the one in the ProPublica article).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">race_score_table</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;race&#39;</span><span class="p">,</span><span class="s1">&#39;decile_score&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span>
+                                <span class="n">index</span><span class="o">=</span><span class="s1">&#39;decile_score&#39;</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;race&#39;</span><span class="p">,</span><span class="n">values</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># percentage of defendants in each score category</span>
+<span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">race_score_table</span><span class="o">/</span><span class="n">race_score_table</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, make a bar plot  with that table (quickest way is to use pandas plot with <code class="docutils literal notranslate"><span class="pre">figsize=[12,7]</span></code> to make it bigger, plot type is indicated by the <code class="docutils literal notranslate"><span class="pre">kind</span></code> parameter)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">race_score_table</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can observe, there is a large discrepancy. Does this change when we condition on other variables?</p>
+<ol class="simple">
+<li><p>Look at how priors are distributed. Follow what you did above for score by race (or continue for help)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">priors</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;race&#39;</span><span class="p">,</span><span class="s1">&#39;priors_count&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;priors_count&#39;</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;race&#39;</span><span class="p">,</span><span class="n">values</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">priors</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>Look at how scores are distributed for those with more than two priors</p></li>
+<li><p>(bonus) What about with less than two priors ?(you can copy or import again the above and modify it)</p></li>
+<li><p>(bonus) Look at first time (use <code class="docutils literal notranslate"><span class="pre">priors_count</span></code>) felons (<code class="docutils literal notranslate"><span class="pre">c_charge_degree</span></code> of <code class="docutils literal notranslate"><span class="pre">F</span></code>) under 25. How is this different?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_2priors</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;priors_count&#39;</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">score_2priors</span> <span class="o">=</span> <span class="n">df_2priors</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;race&#39;</span><span class="p">,</span><span class="s1">&#39;decile_score&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span>
+    <span class="n">index</span><span class="o">=</span><span class="s1">&#39;decile_score&#39;</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;race&#39;</span><span class="p">,</span><span class="n">values</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">score_2priors</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="what-happens-when-we-take-actual-2-year-recidivism-values-into-account-are-the-predictions-fair">
+<h2>What happens when we take actual 2-year recidivism values into account? Are the predictions fair?<a class="headerlink" href="#what-happens-when-we-take-actual-2-year-recidivism-values-into-account-are-the-predictions-fair" title="Permalink to this headline">¶</a></h2>
+<p>First, we’re going to load a different version of the data, it’s quantized. Then look at the correlation between the quantized score, the decile score and the actual recidivism.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfQ</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_cq.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Is the ground truth correlated to the high/low rating (<code class="docutils literal notranslate"><span class="pre">score_text</span></code>)?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># measure with high-low score</span>
+<span class="n">dfQ</span><span class="p">[[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">,</span><span class="s1">&#39;score_text&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Is the ground truth correlated to the <code class="docutils literal notranslate"><span class="pre">decile_score</span></code>rating?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfQ</span><span class="p">[[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">,</span><span class="s1">&#39;decile_score&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The correlation is not that high. How can we evaluate whether the predictions made by the COMPAS scores are fair, especially considering that they do not predict recidivism rates well?</p>
+</div>
+<div class="section" id="fairness-metrics">
+<h2>Fairness Metrics<a class="headerlink" href="#fairness-metrics" title="Permalink to this headline">¶</a></h2>
+<p>The question of how to determine if an algorithm is <em>fair</em> has seen much debate recently (see this tutorial from the Conference on Fairness, Acountability, and Transparency titled <a class="reference external" href="https://fatconference.org/2018/livestream_vh220.html">21 Fairness Definitions and Their Politics</a>.</p>
+<p>And in fact some of the definitions are contradictory, and have been shown to be mutually exclusive [2,3] <a class="reference external" href="https://www.propublica.org/article/bias-in-criminal-risk-scores-is-mathematically-inevitable-researchers-say">https://www.propublica.org/article/bias-in-criminal-risk-scores-is-mathematically-inevitable-researchers-say</a></p>
+<p>Here we will cover 3 notions of fairness and present ways to measure them:</p>
+<ol class="simple">
+<li><p><strong>Disparate Impact</strong> <a class="reference external" href="#References">4</a>
+<a class="reference external" href="https://en.wikipedia.org/wiki/Disparate_impact#The_80.25_rule">The 80% rule</a></p></li>
+<li><p><strong>Calibration</strong> <a class="reference external" href="#References">6</a></p></li>
+<li><p><strong>Equalized Odds</strong> <a class="reference external" href="#References">5</a></p></li>
+</ol>
+<p>For the rest of our analysis we will use a binary outcome - COMPAS score &lt;= 4 is LOW RISK, &gt;4 is HIGH RISK.</p>
+<div class="section" id="disparate-impact">
+<h3>Disparate Impact<a class="headerlink" href="#disparate-impact" title="Permalink to this headline">¶</a></h3>
+<p>Disparate impact is a legal concept used to describe situations when an entity such as an employer <em>inadvertently</em> discriminates gainst a certain protected group. This is distinct from <em>disparate treatment</em> where discrimination is intentional.</p>
+<p>To demonstrate cases of disparate impact, the Equal Opportunity Commission (EEOC) proposed “rule of thumb” is known as the <a class="reference external" href="https://en.wikipedia.org/wiki/Disparate_impact#The_80.25_rule">The 80% rule</a>.</p>
+<p>Feldman et al. <a class="reference external" href="#References">4</a> adapted a fairness metric from this  principle. For our application, it states that the percent of defendants predicted to be high risk in each protected group (in this case whites and African-Americans) should be within 80% of each other.</p>
+<p>Let’s evaluate this standard for the COMPAS data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Let&#39;s measure the disparate impact according to the EEOC rule</span>
+<span class="n">means_score</span> <span class="o">=</span> <span class="n">dfQ</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;score_text&#39;</span><span class="p">,</span><span class="s1">&#39;race&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">means_score</span> <span class="o">=</span> <span class="n">means_score</span><span class="o">/</span><span class="n">means_score</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">means_score</span>
+<span class="c1"># split this cell for the above to print</span>
+<span class="c1"># compute disparate impact</span>
+<span class="n">AA_with_high_score</span> <span class="o">=</span> <span class="n">means_score</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;African-American&#39;</span><span class="p">]</span>
+<span class="n">C_with_high_score</span> <span class="o">=</span> <span class="n">means_score</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Caucasian&#39;</span><span class="p">]</span>
+
+<span class="n">C_with_high_score</span><span class="o">/</span><span class="n">AA_with_high_score</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This ratio is below .8, so there is disparate impact by this rule.  (Taking the priveleged group and the undesirable outcome instead of the disadvantaged group and the favorable outcome).</p>
+<p>What if we apply the same rule to the <strong>true</strong> two year rearrest instead of the quantized COMPAS score?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">means_2yr</span> <span class="o">=</span> <span class="n">dfQ</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">,</span><span class="s1">&#39;race&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+<span class="n">means_2yr</span> <span class="o">=</span> <span class="n">means_2yr</span><span class="o">/</span><span class="n">means_2yr</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">means_2yr</span>
+
+<span class="c1"># compute disparte impact</span>
+<span class="n">AA_with_high_score</span> <span class="o">=</span> <span class="n">means_2yr</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;African-American&#39;</span><span class="p">]</span>
+<span class="n">C_with_high_score</span> <span class="o">=</span> <span class="n">means_2yr</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Caucasian&#39;</span><span class="p">]</span>
+<span class="n">C_with_high_score</span><span class="o">/</span><span class="n">AA_with_high_score</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is a difference in re-arrest, but not as high as assigned by the COMPAS scores. This is still a disparate impact of the actual arrests (since this not necessarily accurate as a recidivism rate, but it is true rearrest).</p>
+<p>Now let’s measure the difference in scores when we consider both the COMPAS output and true recidivism.</p>
+</div>
+<div class="section" id="calibration">
+<h3>Calibration<a class="headerlink" href="#calibration" title="Permalink to this headline">¶</a></h3>
+<p>A discussion of using calibration to verify the fairness of a model can be found in Northpoint’s (now: Equivant) response to the ProPublica article <a class="reference external" href="#References">6</a>.</p>
+<p>The basic idea behind calibrating a classifier is that you want the confidence of the predictor to reflect the true outcomes. So, in a well-calibrated classifier, if 100 people are assigned 90% confidence of being in the positive class, then in reality, 90 of them should actually have had a positive label.</p>
+<p>To use calibration as a fairness metric we compare the calibration of the classifier for each group.  The smaller the difference, the more fair the calssifier.</p>
+<p>In our problem this can be expressed as given <span class="math notranslate nohighlight">\(Y\)</span> indicating two year recidivism, <span class="math notranslate nohighlight">\(S_Q\)</span> indicating score (0=low, 1=high medium), and <span class="math notranslate nohighlight">\(R\)</span> indicating race, we measure</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\mathsf{cal} \triangleq \frac{\mathbb{P}\left(Y=1\mid S_Q=s,R=\mbox{African-American} \right)}{\mathbb{P}\left(Y=1 \mid S_Q=s,R=\mbox{Caucasian} \right)},$$ for different scores $s$. Considering our quantized scores, we look at the calibration for $s=1$.\\
+#### Discuss
+1. Do you think this is close enough?
+1. Which metric do you think is better so far?\\```{code-cell} ipython3
+---
+lecture_tools:
+  block: calibration
+  type: solution
+---
+# compute averages
+dfAverage = dfQ.groupby(['race','score_text'])['two_year_recid'].mean().unstack()\\num = dfAverage.loc['African-American',1]
+denom = dfAverage.loc['Caucasian',1]
+cal = num/denom
+calpercent = 100*(cal-1)
+print('Calibration: %f' % cal)
+print('Calibration in percentage: %f%%' % calpercent)
+```\\+++ {&quot;lecture_tools&quot;: {&quot;block&quot;: &quot;calibration&quot;, &quot;type&quot;: &quot;interpretation&quot;}}\\The difference looks much smaller than before. The problem of the above calibration measure is that it depends on the threshold on which we quantized the scores $S_Q$.\\In order to mitigate this, one might use a variation of this measure called *predictive parity.* In this example, we define predictive parity as\\$$\mathsf{PP}(s) \triangleq \frac{\mathbb{P}\left(Y=1\mid S\geq s,R=\mbox{African-American} \right)}{\mathbb{P}\left(Y=1 \mid S\geq s,R=\mbox{Caucasian} \right)},\end{aligned}\end{align} \]</div>
+<p>where <span class="math notranslate nohighlight">\(S\)</span> is the original score.</p>
+<p>We plot <span class="math notranslate nohighlight">\(\mathsf{PP}(s) \)</span> for <span class="math notranslate nohighlight">\(s\)</span> from 1 to 10. Note how predictive parity depends significantly on the threshold.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># aux function for thresh score</span>
+<span class="k">def</span> <span class="nf">threshScore</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span><span class="o">&gt;=</span><span class="n">s</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+<span class="n">ppv_values</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">dfP</span> <span class="o">=</span> <span class="n">dfQ</span><span class="p">[[</span><span class="s1">&#39;race&#39;</span><span class="p">,</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">):</span>
+    <span class="n">dfP</span><span class="p">[</span><span class="s1">&#39;threshScore&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfQ</span><span class="p">[</span><span class="s1">&#39;decile_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">threshScore</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">s</span><span class="p">))</span>
+    <span class="n">dfAverage</span> <span class="o">=</span> <span class="n">dfP</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;race&#39;</span><span class="p">,</span><span class="s1">&#39;threshScore&#39;</span><span class="p">])[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">dfAverage</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;African-American&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">denom</span> <span class="o">=</span> <span class="n">dfAverage</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Caucasian&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ppv_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">num</span><span class="o">/</span><span class="n">denom</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">),</span><span class="n">ppv_values</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Score Threshold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Predictive Parity (percentage)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Predictive parity for different thresholds</span><span class="se">\n</span><span class="s1">(warning: no error bars)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="equalized-odds">
+<h3>Equalized Odds<a class="headerlink" href="#equalized-odds" title="Permalink to this headline">¶</a></h3>
+<p>The last fairness metric we consider is based on the difference in <em>error rates</em> between groups. Hardt et al. <a class="reference external" href="#References">5</a> propose to look at the difference in the true positive and false positive rates for each group. This aligns with the analysis performed by Propublica. We can examine these values looking at is the ROC for each group. We normalize the score between 0 and 1. The ROC thresholds produced by <code class="docutils literal notranslate"><span class="pre">scikitlearn</span></code> are the same.</p>
+<p>Discuss these results and copmare how these metrics show that there is (or is not) a disparity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># normalize decile score</span>
+<span class="n">max_score</span> <span class="o">=</span> <span class="n">dfQ</span><span class="p">[</span><span class="s1">&#39;decile_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">min_score</span> <span class="o">=</span> <span class="n">dfQ</span><span class="p">[</span><span class="s1">&#39;decile_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">dfQ</span><span class="p">[</span><span class="s1">&#39;norm_score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dfQ</span><span class="p">[</span><span class="s1">&#39;decile_score&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">min_score</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">max_score</span><span class="o">-</span><span class="n">min_score</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+<span class="c1">#plot ROC curve for African-Americans</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">dfQ</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dfQ</span><span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;African-American&#39;</span><span class="p">,[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">,</span><span class="s1">&#39;norm_score&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">fpr1</span><span class="p">,</span><span class="n">tpr1</span><span class="p">,</span><span class="n">thresh1</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_true</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">y_score</span><span class="o">=</span><span class="n">y</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr1</span><span class="p">,</span><span class="n">tpr1</span><span class="p">)</span>
+
+<span class="c1">#plot ROC curve for Caucasian</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">dfQ</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dfQ</span><span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Caucasian&#39;</span><span class="p">,[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">,</span><span class="s1">&#39;norm_score&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">fpr2</span><span class="p">,</span><span class="n">tpr2</span><span class="p">,</span><span class="n">thresh2</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_true</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">y_score</span><span class="o">=</span><span class="n">y</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr2</span><span class="p">,</span><span class="n">tpr2</span><span class="p">)</span>
+<span class="n">l</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;False Positive Rate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True Postitive Rate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;ROC&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;African-American&#39;</span><span class="p">,</span><span class="s1">&#39;Caucasian&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="extension-corels">
+<h1>Extension: CORELS<a class="headerlink" href="#extension-corels" title="Permalink to this headline">¶</a></h1>
+<p>COPMAS has also been criticized for being a generally opaque system. Some machine learning models are easier to understand than others, for example a rule list is easy to understand.
+The <a class="reference external" href="https://corels.eecs.harvard.edu/corels/run.html">CORELS system</a> learns a rule list from the ProPublica data and reports similar accuracy.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">({</span><span class="n">Prior</span><span class="o">-</span><span class="n">Crimes</span><span class="o">&gt;</span><span class="mi">3</span><span class="p">})</span> <span class="n">then</span> <span class="p">({</span><span class="n">label</span><span class="o">=</span><span class="mi">1</span><span class="p">})</span>
+<span class="k">else</span> <span class="k">if</span> <span class="p">({</span><span class="n">Age</span><span class="o">=</span><span class="mi">18</span><span class="o">-</span><span class="mi">22</span><span class="p">})</span> <span class="n">then</span> <span class="p">({</span><span class="n">label</span><span class="o">=</span><span class="mi">1</span><span class="p">})</span>
+<span class="k">else</span> <span class="p">({</span><span class="n">label</span><span class="o">=</span><span class="mi">0</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>Let’s investigate how the rule learned by CORELS compares.</p>
+<ol class="simple">
+<li><p>Write a function that takes one row of the data frame and computes the corels function</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">df.apply</span></code> to apply your function and add a column to the data frame with the corels score</p></li>
+<li><p>Evaluate the CORELS prediction with respect to accuracy, and fairness following the above</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">corels_rule</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;priors_count&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">elif</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Less than 25&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;corels&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">corels_rule</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">#  Let&#39;s measure the disparate impact according to the EEOC rule</span>
+<span class="n">means_corel</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;corels&#39;</span><span class="p">,</span><span class="s1">&#39;race&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">means_corel</span> <span class="o">=</span> <span class="n">means_corel</span><span class="o">/</span><span class="n">means_corel</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">means_corel</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./recaps"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../instructor_notes.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Instructor Notes</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="stem_academy_hints.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Replicating Propbulica’s COMPAS Audit Challenge</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Sarah M Brown<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
