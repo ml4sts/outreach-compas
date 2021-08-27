@@ -188,7 +188,10 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="_sources/troubleshooting.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="_sources/troubleshooting.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -228,6 +231,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ml4sts/outreach-compas/main?urlpath=tree/docs/troubleshooting.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -244,8 +264,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#for-tas">
-   For TAs
+  <a class="reference internal nav-link" href="#useful-cells-to-copy">
+   Useful cells to copy
   </a>
  </li>
 </ul>
@@ -264,14 +284,9 @@
 <div class="section" id="fix-it-yourself">
 <h2>Fix it yourself<a class="headerlink" href="#fix-it-yourself" title="Permalink to this headline">¶</a></h2>
 <ol>
+<li><p>If you see something like <code class="docutils literal notranslate"><span class="pre">pd</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">defined</span></code> look for a cell that includes
+<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pandas</span> <span class="pre">as</span> <span class="pre">pd</span></code> and make sure that is has been run.</p></li>
 <li><p>If you see <code class="docutils literal notranslate"><span class="pre">NameError</span></code> Check that all of the code cells have a number to the left that says that they have run. If they have not, click on each one that has not yet run, and run that one again.</p>
-<div class="highlight-{code notranslate"><div class="highlight"><pre><span></span># this cell is run and has output
-4+3
-</pre></div>
-</div>
-<div class="highlight-{code notranslate"><div class="highlight"><pre><span></span># this cell is run and has no output
-</pre></div>
-</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># this cell is not run</span>
 <span class="mi">4</span><span class="o">+</span><span class="mi">3</span>
 </pre></div>
@@ -284,8 +299,8 @@ can go back any number of steps</p></li>
 <li><p>To repeat a step use <code class="docutils literal notranslate"><span class="pre">tut.repeat()</span></code></p></li>
 </ol>
 </div>
-<div class="section" id="for-tas">
-<h2>For TAs<a class="headerlink" href="#for-tas" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="useful-cells-to-copy">
+<h2>Useful cells to copy<a class="headerlink" href="#useful-cells-to-copy" title="Permalink to this headline">¶</a></h2>
 <p>These bits are common lines that are useful to copy, but knowing when to use
 them might require the advice of a a TA or helper.</p>
 <p>original dataset:</p>
