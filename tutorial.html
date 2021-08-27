@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Instructor Notes" href="instructor_notes.html" />
-    <link rel="prev" title="About the Data and Extensions" href="activity.html" />
+    <link rel="prev" title="How to fix common errors" href="troubleshooting.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -108,6 +108,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="activity.html">
    About the Data and Extensions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="troubleshooting.html">
+   How to fix common errors
   </a>
  </li>
 </ul>
@@ -208,7 +213,9 @@
             href="https://github.com/ml4sts/outreach-compas/issues/new?title=Issue%20on%20page%20%2Ftutorial.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
+        <a class="edit-button" href="https://github.com/ml4sts/outreach-compas/edit/main/docs/tutorial.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
 </div>
 
@@ -232,6 +239,11 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   Installation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#usage">
    Usage
   </a>
@@ -242,8 +254,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fill-in-the-black-tutorial-tmp">
-   Fill in the Black tutorial_tmp
+  <a class="reference internal nav-link" href="#fill-in-the-blank-tutorial-navigation">
+   Fill in the Blank Tutorial Navigation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -266,6 +278,14 @@
 <h1>Tutorial Logistics<a class="headerlink" href="#tutorial-logistics" title="Permalink to this headline">¶</a></h1>
 <p>This activity uses a custom library called compaslab that helps advance through
 the activity.</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>The library is packaged, but not deployed in PiPy, so we install it directly from
+GitHub.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ml4sts</span><span class="o">/</span><span class="n">outreach</span><span class="o">-</span><span class="n">compas</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <p>After installing, import the package</p>
@@ -303,12 +323,18 @@ the activity.</p>
 <tr class="row-odd"><td><p>clean up the temporary files</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">tut.close()</span></code></p></td>
 </tr>
+<tr class="row-even"><td><p>repeat a step</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tut.repeat()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>go back N steps</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tut.previous(N)</span></code></p></td>
+</tr>
 </tbody>
 </table>
 <p>If you get an error, check that all of the cells with code have a number to the left.</p>
 </div>
-<div class="section" id="fill-in-the-black-tutorial-tmp">
-<h2>Fill in the Black tutorial_tmp<a class="headerlink" href="#fill-in-the-black-tutorial-tmp" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fill-in-the-blank-tutorial-navigation">
+<h2>Fill in the Blank Tutorial Navigation<a class="headerlink" href="#fill-in-the-blank-tutorial-navigation" title="Permalink to this headline">¶</a></h2>
 <p>A more advanced version with fill in the blanks can be started with</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tut</span> <span class="o">=</span> <span class="n">compaslab</span><span class="o">.</span><span class="n">LiveTutorial</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">)</span>
 </pre></div>
@@ -337,12 +363,70 @@ the activity.</p>
 <tr class="row-odd"><td><p>get the solution</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">tut.solution()</span></code></p></td>
 </tr>
+<tr class="row-even"><td><p>get an explanation or interpretation of a cell</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tut.explain()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>go to a specific section</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tut.show('sectionname')</span></code></p></td>
+</tr>
 </tbody>
 </table>
+<p>All of the basic commands work as well</p>
 </div>
 <div class="section" id="adding-a-new-tutorial">
 <h2>Adding a new tutorial<a class="headerlink" href="#adding-a-new-tutorial" title="Permalink to this headline">¶</a></h2>
 <p>Add a notebook file to <code class="docutils literal notranslate"><span class="pre">compaslab/activities</span></code> directory in the <a class="reference external" href="https://github.com/ml4sts/outreach-compas">repository</a></p>
+<p>You can read the ones in there (especially the .md versions) to see an example.</p>
+<p>When writing the notebook file, this can be done in a regular notebook or a Myst
+markdown notebook.  If using Myst (which is good for version control) sync it with
+a notebook file using <code class="docutils literal notranslate"><span class="pre">jupytext</span></code> by including the following in the header.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupytext</span><span class="p">:</span>
+  <span class="n">formats</span><span class="p">:</span> <span class="n">md</span><span class="p">:</span><span class="n">myst</span><span class="p">,</span><span class="n">ipynb</span>
+  <span class="n">text_representation</span><span class="p">:</span>
+    <span class="n">extension</span><span class="p">:</span> <span class="o">.</span><span class="n">md</span>
+    <span class="n">format_name</span><span class="p">:</span> <span class="n">myst</span>
+</pre></div>
+</div>
+<p>You can then use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupytext</span> <span class="o">--</span><span class="n">sync</span> <span class="n">filename</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>to get the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file up to date, this is important because the <code class="docutils literal notranslate"><span class="pre">jupytext</span></code>
+read function in the library doesn’t currently work.</p>
+<p>To make a tutorial that has hints put meta data in each cell.</p>
+<ul>
+<li><p>For markdown cells:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+++</span> <span class="p">{</span><span class="s2">&quot;lecture_tools&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;block&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;name of step&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;type of cell&gt;&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+</li>
+<li><p>For code cells:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span>
+<span class="n">lecture_tools</span><span class="p">:</span>
+  <span class="n">block</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">name</span> <span class="n">of</span> <span class="n">step</span><span class="o">&gt;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">type</span> <span class="n">of</span> <span class="n">cell</span><span class="o">&gt;</span>
+<span class="o">---</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">---</span></code> marks the start and end of the metadata in a code cell.
+The name can be whatever, but should be descriptive and typically a few
+consecutive cells will have the same name but be different types.
+The type can be one of the following:</p>
+<ul class="simple">
+<li><p>narrative</p></li>
+<li><p>template</p></li>
+<li><p>hint</p></li>
+<li><p>solution</p></li>
+<li><p>interpretation</p></li>
+</ul>
+<p>For <code class="docutils literal notranslate"><span class="pre">hint</span></code> and <code class="docutils literal notranslate"><span class="pre">template</span></code> cells, also include the following  in the metadata so
+that the recap will work correctly.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tags</span><span class="p">:</span> <span class="p">[</span><span class="n">raises</span><span class="o">-</span><span class="n">exception</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>You can set metadata in the <a class="reference external" href="https://jupyterbook.org/content/metadata.html#adding-tags-using-notebook-interfaces">notebook interface</a> too.</p>
 </div>
 </div>
 
@@ -376,11 +460,11 @@ the activity.</p>
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="activity.html" title="previous page">
+        <a class="left-prev" href="troubleshooting.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">About the Data and Extensions</p>
+                <p class="prevnext-title">How to fix common errors</p>
             </div>
         </a>
     </div>
