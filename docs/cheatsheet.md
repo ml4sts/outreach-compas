@@ -1,9 +1,30 @@
 # Cheatsheet
 
+This page has helpful reminders
+
+## Jupyter Notebooks
+
+[Jupyter Notebooks](https://jupyter.org/index.html) are a computational tool for
+writing code and combining it with text.
+
+```{list-table}
+:header-rows: 1
+
+* - Action
+  - How to
+* - execute a cell (block in the notebook)
+  - shift + enter (windows/linux) or shift + return (mac)
+* - get help for a Function
+  - shift + tab inside `()` (press tab more times for more details)
+
+```
+
+
 ## Vocabulary
 
 
 ```{list-table}
+:header-rows: 1
 
 * - term
   - definition
@@ -34,14 +55,19 @@
 Below are some useful references just for this activity
 
 ```{list-table}
+:header-rows: 1
 
 * - function
   - description
   - example
-* - `load_csv`
+* - `read_csv`
   - load data from a comma separated values (csv) files
-  - `pd.load_csv('data.csv')`
+  - `pd.read_csv('data.csv')`
 * - `describe`
   - get basic statistics that summarize a dataset
   - `df.describe()` or `df['colname'].describe()`
 ```
+
+<!-- ## Python
+
+The -->
