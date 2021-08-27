@@ -14,6 +14,13 @@ kernelspec:
 
 # Instructor Notes
 
+Always, remember to uninstall first so that you install the same version as the
+learners
+
+```
+pip uninstall compaslab
+```
+
 ```{code-cell} ipython3
 pip install ../.
 ```

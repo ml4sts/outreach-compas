@@ -23,7 +23,7 @@ priors.plot(kind='bar',figsize=[12,7])
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mTypeError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipykernel_2133/3082472103.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_1959/3082472103.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      1[0m [0mpriors[0m [0;34m=[0m [0mdf[0m[0;34m.[0m[0mgroupby[0m[0;34m([0m[0;34m[[0m[0;34m'race'[0m[0;34m,[0m[0;34m'priors_count'[0m[0;34m][0m[0;34m)[0m[0;34m.[0m[0msize[0m[0;34m([0m[0;34m)[0m[0;34m.[0m[0mreset_index[0m[0;34m([0m[0;34m)[0m[0;34m.[0m[0mpivot[0m[0;34m([0m[0mindex[0m[0;34m=[0m[0;34m'priors_count'[0m[0;34m,[0m[0mcolumns[0m[0;34m=[0m[0;34m'race'[0m[0;34m,[0m[0mvalues[0m[0;34m=[0m[0;36m0[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 2[0;31m [0mpriors[0m[0;34m.[0m[0mplot[0m[0;34m([0m[0mkind[0m[0;34m=[0m[0;34m'bar'[0m[0;34m,[0m[0mfigsize[0m[0;34m=[0m[0;34m[[0m[0;36m12[0m[0;34m,[0m[0;36m7[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m
