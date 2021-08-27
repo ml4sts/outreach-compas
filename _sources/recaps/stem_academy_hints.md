@@ -169,27 +169,27 @@ lecture_tools:
 df['race'].value_counts()
 ```
 
-+++ {"lecture_tools": {"block": "filter", "type": "instructions"}}
++++ {"lecture_tools": {"block": "compare", "type": "instructions"}}
 
-2. filter to keep data from the two larges groups
+2. compare that with what the original dataset had
 
 ```{code-cell} ipython3
 ---
 tags: ["raises-exception","remove-output"]
 lecture_tools:
-  block: filter
+  block: compare
   type: template
 ---
-df = df.loc[df['race'].isin(['',''])]
+df_pp['___'].___()
 ```
 
 ```{code-cell} ipython3
 ---
 lecture_tools:
-  block: filter
+  block: compare
   type: solution
 ---
-df = df.loc[df['race'].isin(['African-American','Caucasian'])]
+df_pp['race'].value_counts()
 ```
 
 +++ {"lecture_tools": {"block": "distribution", "type": "narrative"}}
@@ -240,7 +240,6 @@ race_score_table.__(kind='__')
 
 ```{code-cell} ipython3
 ---
-tags: ["raises-exception","remove-output"]
 lecture_tools:
   block: distributionviz
   type: solution
