@@ -20,19 +20,6 @@ kernelspec:
 1. If you see something like `pd is not defined` look for a cell that includes
 `import pandas as pd` and make sure that is has been run.
 1. If you see `NameError` Check that all of the code cells have a number to the left that says that they have run. If they have not, click on each one that has not yet run, and run that one again.
-
-    ```{code-cell} ipython3
-    # this cell is run and has output
-    4+3
-    ```
-    ```{code-cell} ipython3
-    # this cell is run and has no output
-    ```
-
-    ```
-    # this cell is not run
-    4+3
-    ```
 1. If you see output like `<bound method ...` check that you used `tut.next()`
 with the `()`
 1. To go back, use `tut.previous()` or `tut.previous(3)` to go back 3 steps, you
