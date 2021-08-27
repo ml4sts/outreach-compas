@@ -71,7 +71,7 @@ lecture_tools:
   type: solution
 ---
 print(list(df_pp))
-print(df_pp.head())
+df_pp.head()
 ```
 
 +++ {"lecture_tools": {"block": "cleandata", "type": "narrative"}}
@@ -118,7 +118,7 @@ In particular, as in the ProPublica analysis, we are interested in the implicati
 
 +++ {"lecture_tools": {"block": "explore", "type": "instructions"}}
 
-1. Use `value_counts` to look at how much data is available for each race
+1. Use `value_counts` to look at how much data is available for each race and compare the original and clean versions
 
 ```{code-cell} ipython3
 ---
@@ -127,19 +127,6 @@ lecture_tools:
   type: solution
 ---
 df['race'].value_counts()
-```
-
-+++ {"lecture_tools": {"block": "filter", "type": "instructions"}}
-
-2. filter to keep data from the two larges groups
-
-```{code-cell} ipython3
----
-lecture_tools:
-  block: filter
-  type: solution
----
-df = df.loc[df['race'].isin(['African-American','Caucasian'])]
 ```
 
 +++ {"lecture_tools": {"block": "distribution", "type": "narrative"}}
