@@ -61,6 +61,7 @@ tut = compaslab.LiveTutorial('filename')
 That provides the additional controls:
 ```{list-table}
 :header-rows: 1
+
 * - go to the next section
   - `tut.jump()`
 * - get a hint
