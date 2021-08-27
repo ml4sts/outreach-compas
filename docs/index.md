@@ -9,6 +9,7 @@ This is the home page for our lab's outreach activity.
 1. In your URI e-mail, find an e-mail from `root@quahog.uri.edu`
 1. In a new tab, open to the [URI Jupyter Notebook Server](https://jupyter.uri.edu/)
 1. Login using the username and password in the e-mail
+1. Check out the [Cheatsheet page](cheatsheet) for tips and terms or the [Troubleshooting](troubleshooting) page if you have issues. 
 1. Open a new notebook, (new > Python3)
 1. Download and install helper code:
 
