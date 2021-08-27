@@ -14,8 +14,25 @@ kernelspec:
 
 # Instructor Notes
 
+## Preparation
+
 Always, remember to uninstall first so that you install the same version as the
 learners
+
+
+
+## Key points Notebook Tour
+
+- edit/command modes
+- run vs not run cells
+- code cells vs markdown cells
+- add, delete, restart, run
+
+
+
+
+
+## Activity Outlines for Live tutorials
 
 ```
 pip uninstall compaslab
@@ -29,8 +46,7 @@ pip install ../.
 import compaslab
 ```
 
-
-## TD STEM Academy
+### STEM Academy
 ```{code-cell} ipython3
 tut= compaslab.LiveTutorial('stem_academy.ipynb')
 
