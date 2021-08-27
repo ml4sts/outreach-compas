@@ -30,14 +30,13 @@ First, we need to import some common libraries,
 ---
 lecture_tools:
   block: setup
-  type: template
+  type: solution
 ---
 import numpy as np
 import pandas as pd
 import scipy
 import matplotlib.pyplot as plt
 import seaborn as sns
-import itertools
 from sklearn.metrics import roc_curve
 import warnings
 warnings.filterwarnings('ignore')
@@ -51,6 +50,7 @@ The dataset consists of COMPAS scores assigned to defendants over two years 2013
 
 ```{code-cell} ipython3
 ---
+tags: [raises-exception]
 lecture_tools:
   block: data
   type: template
@@ -62,6 +62,7 @@ df_pp = pd.__('__',
 
 ```{code-cell} ipython3
 ---
+tags: [raises-exception]
 lecture_tools:
   block: data
   type: hint
@@ -105,6 +106,7 @@ For this tutorial, we've prepared a cleaned copy of the data, that we can import
 
 ```{code-cell} ipython3
 ---
+tags: [raises-exception]
 lecture_tools:
   block: cleandata
   type: template
@@ -150,6 +152,7 @@ In particular, as in the ProPublica analysis, we are interested in the implicati
 
 ```{code-cell} ipython3
 ---
+tags: [raises-exception]
 lecture_tools:
   block: explore
   type: template
@@ -172,6 +175,7 @@ df['race'].value_counts()
 
 ```{code-cell} ipython3
 ---
+tags: [raises-exception]
 lecture_tools:
   block: filter
   type: template
@@ -196,6 +200,7 @@ Let's look at the COMPAS score distribution between African-Americans and Caucas
 
 ```{code-cell} ipython3
 ---
+tags: [raises-exception]
 lecture_tools:
   block: distribution
   type: template
@@ -225,6 +230,7 @@ Next, make a bar plot  with that table (quickest way is to use pandas plot with 
 
 ```{code-cell} ipython3
 ---
+tags: [raises-exception]
 lecture_tools:
   block: distributionviz
   type: template
@@ -234,6 +240,7 @@ race_score_table.__(kind='__')
 
 ```{code-cell} ipython3
 ---
+tags: [raises-exception]
 lecture_tools:
   block: distributionviz
   type: solution
@@ -542,6 +549,7 @@ Let's investigate how the rule learned by CORELS compares.
 
 ```{code-cell} ipython3
 ---
+tags: [raises-exception]
 lecture_tools:
   block: calibration
   type: template

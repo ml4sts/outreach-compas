@@ -1,3 +1,5 @@
 *.ipynb_checkpoints
 __pycache__
 docs/_build/*
+docs/tutorial_tmp*
+tutorial_tmp*

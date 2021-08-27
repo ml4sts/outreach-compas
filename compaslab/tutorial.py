@@ -56,6 +56,22 @@ class Tutorial:
         self.display(self.tutorial[self.next_cell])
         self.next_cell+= 1
 
+    def previous(self, n=1):
+        '''
+        show the next cell
+        '''
+        self.next_cell -= n+1
+        self.display(self.tutorial[self.next_cell])
+        self.next_cell+= 1
+
+    def repeat(self):
+        '''
+        show the next cell
+        '''
+        self.next_cell -=1
+        self.display(self.tutorial[self.next_cell])
+        self.next_cell+= 1
+
     def start(self):
         '''
         start the tutorial

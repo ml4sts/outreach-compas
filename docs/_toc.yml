@@ -9,6 +9,7 @@ parts:
     - file: cheatsheet
     - file: resources
     - file: activity
+    - file: troubleshooting
   - caption: About
     chapters:
     - file: tutorial
