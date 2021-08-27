@@ -39,15 +39,17 @@ pip uninstall compaslab
 ```
 
 ```{code-cell} ipython3
-pip install ../.
-```
+---
+:tags: ["remove-input","remove-output"]
 
-```{code-cell} ipython3
+pip install ../.
 import compaslab
 ```
 
 ### STEM Academy
 ```{code-cell} ipython3
+:tags: ["remove-input"]
+
 tut= compaslab.LiveTutorial('stem_academy.ipynb')
 
 for i,curb in enumerate(tut.block_list):
@@ -55,6 +57,8 @@ for i,curb in enumerate(tut.block_list):
 ```
 
 ```{code-cell} ipython3
+:tags: ["remove-input"]
+
 tut= compaslab.LiveTutorial('stem_academy_hints.ipynb')
 
 for i,curb in enumerate(tut.block_list):
@@ -64,5 +68,7 @@ for i,curb in enumerate(tut.block_list):
 
 Wrap up
 ```{code-cell} ipython3
+:tags: ["remove-input"]
+
 tut.close()
 ```
